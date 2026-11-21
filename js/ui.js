@@ -254,7 +254,7 @@
     if (!b || !b.type) return '';
     var self = this;
 
-    /* 深挖块：点击「深入调查」展开隐藏段落（模拟逆转裁判的威慑逼供） */
+    /* 深挖块：点击「深入调查」展开隐藏段落（威慑逼供式的深挖质询） */
     if (b.type === 'dig') {
       if (engine.isDigOpened(doc.id, blockIdx)) {
         var revealHtml = (b.reveal || []).map(function (rb) {
