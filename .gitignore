@@ -10,8 +10,8 @@ dist/
 # 格式历史遗留（v1 仅本地存档）
 script-format/legacy-v1/
 
-# 内部调研文档（含第三方商标大量提及，仅本地存档）
-docs/逆转裁判式游戏调研与设计文档.html
+# 内部调研文档（仅本地存档）
+docs/game-research-notes.html
 
 # 系统文件
 Thumbs.db
