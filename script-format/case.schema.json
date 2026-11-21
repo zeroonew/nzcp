@@ -1,0 +1,233 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://nzcp.local/script-format/case.schema.json",
+  "title": "NZCP 案宗推理剧本格式 2.0",
+  "description": "NZCP 纯前端案宗推理游戏的案件剧本格式。一个 JSON 文件 = 一个完整案件。玩法：阅读案宗文档 → 摘录线索 → 在线索板上组合线索回答推理议题 → 解锁新文档 → 最终指认凶手结案。剧本由元数据、人物、文档、线索、推理议题、结论、结案构成，全部为声明式数据，无需编写控制流。",
+  "type": "object",
+  "required": ["format_version", "case", "characters", "documents", "clues", "questions", "findings", "accusation"],
+  "properties": {
+    "format_version": { "const": "2.0" },
+    "case": { "$ref": "#/definitions/CaseMeta" },
+    "characters": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/Character" } },
+    "documents": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/Document" } },
+    "clues": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/Clue" } },
+    "questions": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/Question" } },
+    "findings": { "type": "array", "items": { "$ref": "#/definitions/Finding" } },
+    "accusation": { "$ref": "#/definitions/Accusation" }
+  },
+  "definitions": {
+    "Id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]*$", "description": "小写字母开头，允许小写字母/数字/下划线/连字符" },
+
+    "Script": {
+      "type": "array",
+      "description": "精简演出指令序列（用于序章/推理反馈/结案/尾声）。v2 仅支持演出类指令，无控制流。",
+      "items": {
+        "type": "object",
+        "required": ["op"],
+        "oneOf": [
+          {
+            "properties": {
+              "op": { "const": "say" },
+              "who": { "type": ["string", "null"], "description": "人物 ID；null=旁白" },
+              "text": { "type": "string", "minLength": 1 },
+              "emotion": { "type": "string", "description": "可选（v2 无立绘，保留字段）" }
+            },
+            "required": ["op", "who", "text"]
+          },
+          {
+            "properties": { "op": { "const": "narrate" }, "text": { "type": "string", "minLength": 1 } },
+            "required": ["op", "text"]
+          },
+          {
+            "properties": {
+              "op": { "const": "fx" },
+              "type": { "type": "string", "enum": ["flash", "shake", "flash_text", "fadeout"] },
+              "text": { "type": "string" }
+            },
+            "required": ["op", "type"]
+          },
+          {
+            "properties": { "op": { "const": "bgm" }, "id": { "type": ["string", "null"] } },
+            "required": ["op", "id"]
+          },
+          {
+            "properties": { "op": { "const": "sfx" }, "id": { "type": "string" } },
+            "required": ["op", "id"]
+          }
+        ]
+      }
+    },
+
+    "CaseMeta": {
+      "type": "object",
+      "required": ["id", "title", "episode"],
+      "properties": {
+        "id": { "$ref": "#/definitions/Id" },
+        "title": { "type": "string" },
+        "episode": { "type": "string", "description": "话数，如「第1话」" },
+        "subtitle": { "type": "string" },
+        "author": { "type": "string" },
+        "difficulty": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "play_time": { "type": "string", "description": "预计游玩时长" },
+        "summary": { "type": "string", "description": "案件简介（选案菜单展示，不剧透）" },
+        "prologue": { "$ref": "#/definitions/Script", "description": "开场演出（标题后、进入案宗前）" },
+        "epilogue": { "$ref": "#/definitions/Script", "description": "尾声演出（结案演出后）" }
+      }
+    },
+
+    "Character": {
+      "type": "object",
+      "required": ["id", "name", "role"],
+      "properties": {
+        "id": { "$ref": "#/definitions/Id" },
+        "name": { "type": "string" },
+        "role": { "type": "string", "description": "身份，如「被告」「目击证人」「刑警」" },
+        "desc": { "type": "string", "description": "人物简介（结案指认时展示）" },
+        "color": { "type": "string", "description": "名牌主题色（可选，如 #b45309）" }
+      }
+    },
+
+    "Document": {
+      "type": "object",
+      "required": ["id", "type", "title", "blocks"],
+      "properties": {
+        "id": { "$ref": "#/definitions/Id" },
+        "type": {
+          "type": "string",
+          "enum": ["record", "testimony", "report", "photo", "letter", "news", "other"],
+          "description": "record=笔录/证物登记 testimony=证词 report=报告 photo=照片/证物图 letter=信件 news=报道 other=其他"
+        },
+        "title": { "type": "string" },
+        "meta": {
+          "type": "object",
+          "description": "卷宗抬头信息（可选）",
+          "properties": {
+            "no": { "type": "string", "description": "档案编号，如 K-04" },
+            "author": { "type": "string", "description": "出具人/来源" },
+            "date": { "type": "string" },
+            "stamp": { "type": "string", "description": "印章文字，如「机密」「已受理」" }
+          }
+        },
+        "initial": { "type": "boolean", "default": true, "description": "true=开局可见；false=需满足 requires 条件后解锁" },
+        "requires_findings": { "type": "array", "items": { "$ref": "#/definitions/Id" }, "description": "解锁所需结论 ID（全部满足）" },
+        "requires_clues": { "type": "array", "items": { "$ref": "#/definitions/Id" }, "description": "解锁所需线索 ID（全部满足）" },
+        "blocks": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/definitions/Block" }
+        }
+      }
+    },
+
+    "Block": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "type": "string", "enum": ["heading", "para", "quote", "list", "table", "photo", "sign", "dig"] },
+        "text": { "type": "string", "description": "heading/para/quote/sign 的内容；dig 的内容为深挖引导语（如「卷宗背面还有字迹……」）" },
+        "items": { "type": "array", "items": { "type": "string" }, "description": "list 的条目" },
+        "rows": { "type": "array", "items": { "type": "array", "items": { "type": "string" } }, "description": "table 的行（第一行为表头）" },
+        "caption": { "type": "string", "description": "photo 的图说" },
+        "clue": { "$ref": "#/definitions/Id", "description": "本块是可摘录线索来源：对应 clues[].id。仅 para/quote/photo 支持" },
+        "keywords": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 },
+          "description": "关键词圈选模式：本段正文中可被玩家点击「红笔圈选」的字眼。玩家须一处一处亲手圈选，圈齐全部字眼后线索才收录上线索板（不是任一命中即收录）。每一项必须是本块 text 的连续子串。配置后本段不再显示金线标记。仅 para/quote 且必须同时带 clue"
+        },
+        "hidden": { "type": "boolean", "default": false, "description": "隐藏线索块：true 时渲染为普通段落（无金线无标记），玩家通读正文时点击才能发现（反馈「注意到了！」）。仅 para/quote 支持，且必须带 clue" },
+        "reveal": { "type": "array", "items": { "$ref": "#/definitions/Block" }, "description": "dig 深挖块点击「深入调查」后展开的隐藏段落（Block 数组，可含带 clue 的 para/quote，支持嵌套 dig）" }
+      }
+    },
+
+    "Clue": {
+      "type": "object",
+      "required": ["id", "label", "text"],
+      "properties": {
+        "id": { "$ref": "#/definitions/Id" },
+        "label": { "type": "string", "description": "线索卡标题（短，≤14字）" },
+        "text": { "type": "string", "description": "线索详情（1-3 句）" },
+        "category": { "type": "string", "enum": ["physical", "testimony", "background", "deduction"], "default": "physical", "description": "物证/证词/背景/推论（仅影响卡片配色）" },
+        "initial": { "type": "boolean", "default": false, "description": "true=开局即在线索板（无需摘录）" },
+        "source": { "$ref": "#/definitions/Id", "description": "来源文档 ID（可选，用于卡片角标「出自 K-04」）" }
+      }
+    },
+
+    "Finding": {
+      "type": "object",
+      "required": ["id", "label", "text"],
+      "properties": {
+        "id": { "$ref": "#/definitions/Id" },
+        "label": { "type": "string", "description": "结论卡标题（短，≤14字）" },
+        "text": { "type": "string", "description": "结论详情" },
+        "category": { "type": "string", "enum": ["deduction"], "default": "deduction" }
+      },
+      "description": "推理结论：答对议题后生成的卡片，可再次作为后续议题的输入（构建线索链）"
+    },
+
+    "Question": {
+      "type": "object",
+      "required": ["id", "title", "prompt", "answer", "on_correct"],
+      "properties": {
+        "id": { "$ref": "#/definitions/Id" },
+        "title": { "type": "string", "description": "议题标题（案件板上的条目）" },
+        "prompt": { "type": "string", "description": "问题正文（「哪两条线索能证明……？」）" },
+        "stage": { "type": "integer", "minimum": 1, "maximum": 9, "default": 1, "description": "阶段序号（UI 分组排序，可选）" },
+        "optional": { "type": "boolean", "default": false, "description": "支线议题：不产出主线结论、不计入结案条件" },
+        "requires_clues": { "type": "array", "items": { "$ref": "#/definitions/Id" }, "description": "出现条件：需已拥有这些线索" },
+        "requires_findings": { "type": "array", "items": { "$ref": "#/definitions/Id" }, "description": "出现条件：需已完成这些结论" },
+        "answer": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
+          "items": { "$ref": "#/definitions/Id" },
+          "description": "正确答案：线索/结论卡 ID 组合（顺序不敏感）"
+        },
+        "hint": { "type": "string", "description": "提示：引导玩家思考方向，不直接给答案" },
+        "locked_hint": { "type": "string", "description": "议题未解锁时显示的剧情化引导语：告诉玩家去哪份文档找材料（不剧透答案）。缺失时显示缺料计数" },
+        "on_correct": {
+          "type": "object",
+          "required": ["finding"],
+          "properties": {
+            "finding": { "$ref": "#/definitions/Id", "description": "答对后生成的结论 ID（须在 findings 中定义）" },
+            "script": { "$ref": "#/definitions/Script", "description": "答对演出（1-3 句，强化逆转感）" }
+          }
+        },
+        "on_wrong": {
+          "type": "object",
+          "properties": {
+            "message": { "type": "string", "description": "答错提示（不揭晓答案，给思考方向）" }
+          }
+        }
+      }
+    },
+
+    "Accusation": {
+      "type": "object",
+      "required": ["prompt", "suspects", "culprit", "required_findings", "on_correct"],
+      "properties": {
+        "prompt": { "type": "string", "description": "结案问题，如「真凶是谁？请提交完整的证据链。」" },
+        "suspects": { "type": "array", "minItems": 2, "items": { "$ref": "#/definitions/Id" }, "description": "可选嫌疑人（人物 ID）" },
+        "culprit": { "$ref": "#/definitions/Id", "description": "正确凶手（人物 ID，须在 suspects 中）" },
+        "required_findings": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/definitions/Id" },
+          "description": "结案必须提交的结论卡（同时作为结案按钮激活条件）"
+        },
+        "on_correct": {
+          "type": "object",
+          "required": ["script"],
+          "properties": { "script": { "$ref": "#/definitions/Script", "description": "结案演出（真相揭晓/宣判）" } }
+        },
+        "on_wrong": {
+          "type": "object",
+          "properties": {
+            "message": { "type": "string" },
+            "script": { "$ref": "#/definitions/Script", "description": "错误结案演出（可选）" }
+          }
+        }
+      }
+    }
+  }
+}

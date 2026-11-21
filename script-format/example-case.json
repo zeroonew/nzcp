@@ -1,0 +1,307 @@
+{
+  "format_version": "2.0",
+  "case": {
+    "id": "case-demo-001",
+    "title": "逆转的雨夜目击者",
+    "episode": "第1话",
+    "subtitle": "～藏在线索链里的真相～",
+    "author": "NZCP 官方示例",
+    "difficulty": 1,
+    "play_time": "约 15-20 分钟",
+    "summary": "深夜的当铺仓库，店主被发现身亡。目击者言之凿凿，被告疑点重重——但真正的真相，都写在这堆案宗里。",
+    "prologue": [
+      { "op": "narrate", "text": "2026年11月3日　晚上10点30分前后。" },
+      { "op": "narrate", "text": "群马市城东商店街，暴雨倾盆。" },
+      { "op": "narrate", "text": "翌日清晨，当铺『黑川屋』店主·黑川慎二在仓库内被发现身亡，警方以杀人嫌疑逮捕了拉面店店员·叶山凉。" },
+      { "op": "say", "who": "char_su", "text": "海帆哥，这就是全部的案宗……目击者的证词，好像对叶山君非常不利。" },
+      { "op": "say", "who": "char_zhang", "text": "证词、笔录、报告——纸不会说谎，说谎的是写下它们的人。" },
+      { "op": "say", "who": "char_zhang", "text": "把线索一条条理出来。真相，就藏在这堆案宗里。" },
+      { "op": "fx", "type": "flash_text", "text": "第1话　逆转的雨夜目击者" }
+    ],
+    "epilogue": [
+      { "op": "narrate", "text": "——三天后。" },
+      { "op": "narrate", "text": "仓田铁夫因杀人罪与盗窃罪被正式起诉。警方在其住处找到了被破坏的监控存储设备，以及尚未出手的质押品。" },
+      { "op": "say", "who": "char_su", "text": "海帆哥！报纸上写了——『档案室里的名侦探』！" },
+      { "op": "say", "who": "char_zhang", "text": "（……我只是把纸读完而已。）" },
+      { "op": "narrate", "text": "——雨停了。真相，永远比谎言更经得起雨水的冲刷。" }
+    ]
+  },
+  "characters": [
+    { "id": "char_zhang", "name": "张海帆", "role": "辩方律师（主角）", "desc": "出道第二年的辩护律师。信条：证据不会说谎，但会沉默。", "color": "#1d4ed8" },
+    { "id": "char_su", "name": "苏小铃", "role": "律师助手", "desc": "海帆的助手。观察力惊人，破坏力也是。", "color": "#c2410c" },
+    { "id": "char_yeshan", "name": "叶山凉", "role": "本案被告", "desc": "拉面店店员，24岁。当铺常客，案发当晚在附近出现而被逮捕。", "color": "#15803d" },
+    { "id": "char_kurokawa", "name": "黑川慎二", "role": "本案被害人", "desc": "当铺『黑川屋』店主，52岁。待人和气，收利息时手可不软。", "color": "#57534e" },
+    { "id": "char_dojima", "name": "堂岛真理惠", "role": "目击证人", "desc": "住在当铺对面的主妇，38岁。自称『目击了一切』。", "color": "#a16207" },
+    { "id": "char_kura", "name": "仓田铁夫", "role": "当铺常客", "desc": "46岁，无业。黑川屋的常客，右腿有旧伤，走路一瘸一拐。", "color": "#7f1d1d" },
+    { "id": "char_tadokoro", "name": "田所武", "role": "辖区刑警", "desc": "45岁，老好人刑警。笔录写得比人先到。", "color": "#0f766e" },
+    { "id": "char_kanjo", "name": "九条凛", "role": "检察官", "desc": "27岁，出道以来胜率100%的新秀检察官。", "color": "#6d28d9" },
+    { "id": "char_bailu", "name": "白泽裁判长", "role": "裁判长", "desc": "以『稳如泰山』著称的资深裁判长。", "color": "#334155" }
+  ],
+  "documents": [
+    {
+      "id": "doc_brief",
+      "type": "record",
+      "title": "案件受理概要",
+      "meta": { "no": "A-01", "author": "地方法院第三法庭", "date": "11月4日", "stamp": "受理" },
+      "initial": true,
+      "blocks": [
+        { "type": "heading", "text": "案件概要" },
+        { "type": "para", "text": "11月3日23时10分，110接到『黑川屋』当铺附近居民的报警。警方赶赴现场后，在当铺仓库内发现店主黑川慎二倒地身亡。", "clue": "clue_report_time" },
+        { "type": "para", "text": "现场为城东商店街尽头的『黑川屋』当铺仓库。仓库内的保险柜被打开，现金与部分质押品不翼而飞。", "clue": "clue_case_place" },
+        { "type": "para", "text": "11月4日清晨，警方以杀人嫌疑逮捕了案发当晚曾在附近出现的拉面店店员·叶山凉。叶山对指控予以否认。" },
+        { "type": "sign", "text": "签发：地方法院第三法庭" }
+      ]
+    },
+    {
+      "id": "doc_witness",
+      "type": "testimony",
+      "title": "目击证词笔录",
+      "meta": { "no": "K-02", "author": "辖区警署 · 田所武", "date": "11月4日", "stamp": "证词" },
+      "initial": true,
+      "blocks": [
+        { "type": "heading", "text": "证人陈述（堂岛真理惠，38岁，主妇）" },
+        { "type": "quote", "text": "「那天晚上，我一直待在自家二楼窗边等丈夫回家。」" },
+        { "type": "quote", "text": "「晚上9点整，我亲眼看到被告从当铺仓库里跑了出来！」", "clue": "clue_witness_nine" },
+        { "type": "quote", "text": "「他逃跑的时候，穿着那件蓝色的雨衣。那是被告常穿的衣服，绝对没错！」", "clue": "clue_witness_blue" },
+        { "type": "para", "text": "以上陈述经证人确认无误。" },
+        { "type": "sign", "text": "记录人：田所武" }
+      ]
+    },
+    {
+      "id": "doc_autopsy",
+      "type": "report",
+      "title": "法医解剖记录",
+      "meta": { "no": "K-04", "author": "法医 · 李默", "date": "11月4日", "stamp": "机密" },
+      "initial": true,
+      "blocks": [
+        { "type": "heading", "text": "解剖所见" },
+        { "type": "table", "rows": [
+          ["项目", "结果"],
+          ["死者", "黑川慎二（52岁，男性）"],
+          ["死因", "头部遭钝器重击，颅骨骨折"],
+          ["死亡推定时刻", "11月3日 22:30 前后"],
+          ["其他", "无防御性创伤，疑为背后偷袭"]
+        ] },
+        { "type": "para", "text": "死亡推定时刻为11月3日晚上10点30分前后，误差范围约前后15分钟。", "clue": "clue_death_2230" },
+        { "type": "para", "text": "胃内容物显示，死者最后一餐为当晚20时前后进食的荞麦面。" },
+        { "type": "sign", "text": "法医 · 李默" }
+      ]
+    },
+    {
+      "id": "doc_scene",
+      "type": "report",
+      "title": "现场勘查笔录",
+      "meta": { "no": "K-05", "author": "鉴定科", "date": "11月3日", "stamp": "现场" },
+      "initial": true,
+      "blocks": [
+        { "type": "heading", "text": "仓库内部" },
+        { "type": "para", "text": "衣帽钩上挂着一件蓝色雨衣。雨衣为干燥状态，拉链损坏，无法正常穿着。", "clue": "clue_coat_hook" },
+        { "type": "para", "text": "仓库入口旁的监控探头线缆被人为扯断，存储设备去向不明。", "clue": "clue_cctv" },
+        { "type": "para", "text": "保险柜呈开启状态，柜内现金收纳盒为空。地面有翻倒的展示柜与散落的质押品标签。" },
+        { "type": "photo", "caption": "现场照片（拍摄时间 23:35）：仓库内部全景。衣帽钩上的蓝色雨衣格外显眼。" },
+        { "type": "para", "text": "门口水洼中发现一枚浸透的烟头，品牌无法辨认。" },
+        { "type": "sign", "text": "鉴定科 · 现场班" }
+      ]
+    },
+    {
+      "id": "doc_interview",
+      "type": "record",
+      "title": "被告询问笔录",
+      "meta": { "no": "K-06", "author": "田所武", "date": "11月4日", "stamp": "笔录" },
+      "initial": true,
+      "blocks": [
+        { "type": "heading", "text": "被询问人：叶山凉（24岁，拉面店店员）" },
+        { "type": "quote", "text": "「那天我22点下夜班，在当铺隔壁的便利店买了关东煮就回家了。真的只是路过！」" },
+        { "type": "quote", "text": "「对了……我在便利店门口看到后巷有个人影跑出来。穿着亮黄色的雨衣，肩膀很宽，走路一瘸一拐的。绝对不是我！」", "clue": "clue_yellow_man" },
+        { "type": "quote", "text": "「我没带伞，也没穿雨衣。那天雨那么大，我一路小跑回的家。」", "clue": "clue_no_umbrella" },
+        { "type": "para", "text": "被询问人情绪激动，反复强调自己没有杀人。" },
+        { "type": "sign", "text": "记录人：田所武" }
+      ]
+    },
+    {
+      "id": "doc_receipt",
+      "type": "photo",
+      "title": "证物：便利店小票",
+      "meta": { "no": "K-07", "author": "证物登记", "date": "11月4日", "stamp": "已受理" },
+      "initial": true,
+      "blocks": [
+        { "type": "heading", "text": "便利店小票（叶山凉提交）" },
+        { "type": "para", "text": "购买时间：11月3日22时00分。商品：关东煮（5品）。支付方式：现金。", "clue": "clue_receipt_2200" },
+        { "type": "para", "text": "店员证言：该顾客没带伞也没穿雨衣，买完东西往住宅区方向离开了。" },
+        { "type": "sign", "text": "登记：田所武" }
+      ]
+    },
+    {
+      "id": "doc_police",
+      "type": "report",
+      "title": "刑事调查报告（节选）",
+      "meta": { "no": "K-09", "author": "辖区警署", "date": "11月4日", "stamp": "调查" },
+      "initial": true,
+      "blocks": [
+        { "type": "heading", "text": "关于当铺常客·仓田铁夫" },
+        { "type": "para", "text": "仓田铁夫（46岁，无业）。近半年频繁出入黑川屋，以质押名义借款，累计金额巨大。" },
+        { "type": "para", "text": "半月前，仓田与被害人在店内发生激烈争吵，有路人目击。争吵内容涉及『还钱』与『烧店』等字眼。", "clue": "clue_kura_quarrel" },
+        { "type": "para", "text": "仓田右腿有旧伤，行走时明显一瘸一拐。", "clue": "clue_kura_limp" },
+        { "type": "para", "text": "案发当晚，仓田的行踪尚未查清。" },
+        { "type": "sign", "text": "辖区警署 · 刑事课" }
+      ]
+    },
+    {
+      "id": "doc_ledger",
+      "type": "record",
+      "title": "证物：黑川屋账本",
+      "meta": { "no": "K-12", "author": "证物登记", "date": "11月5日", "stamp": "补充证据" },
+      "initial": false,
+      "requires_findings": ["finding_figure_kura"],
+      "blocks": [
+        { "type": "heading", "text": "账本摘录" },
+        { "type": "table", "rows": [
+          ["日期", "客户", "事项"],
+          ["9月12日", "仓田铁夫", "借款50万"],
+          ["10月03日", "仓田铁夫", "借款120万"],
+          ["10月28日", "仓田铁夫", "借款130万，逾期未还"]
+        ] },
+        { "type": "para", "text": "账本夹页发现一张字条：『月底再不还钱，就烧了你的店。——仓田』", "clue": "clue_kura_debt" },
+        { "type": "para", "text": "注：该账本由辩护人申请调取，警方于11月5日补充提交。" },
+        { "type": "sign", "text": "证物登记 · 第12号" }
+      ]
+    }
+  ],
+  "clues": [
+    { "id": "clue_report_time", "label": "报警时间 23:10", "text": "11月3日23时10分，附近居民报警。", "category": "background", "initial": true, "source": "doc_brief" },
+    { "id": "clue_case_place", "label": "案发地点·当铺仓库", "text": "城东商店街『黑川屋』当铺仓库。保险柜被打开，现金与质押品失窃。", "category": "background", "initial": true, "source": "doc_brief" },
+    { "id": "clue_witness_nine", "label": "证词：9点目击", "text": "证人声称『晚上9点整』亲眼看到被告从仓库跑出来。", "category": "testimony", "source": "doc_witness" },
+    { "id": "clue_witness_blue", "label": "证词：蓝色雨衣", "text": "证人声称逃跑者穿着被告常穿的蓝色雨衣。", "category": "testimony", "source": "doc_witness" },
+    { "id": "clue_death_2230", "label": "死亡推定 22:30", "text": "法医结论：死亡推定时刻为11月3日22时30分前后（误差±15分钟）。", "category": "physical", "source": "doc_autopsy" },
+    { "id": "clue_coat_hook", "label": "雨衣在仓库·干燥", "text": "衣帽钩上的蓝色雨衣：干燥状态，拉链损坏，无法穿着。", "category": "physical", "source": "doc_scene" },
+    { "id": "clue_cctv", "label": "监控被人为破坏", "text": "仓库监控线缆被扯断，存储设备去向不明。", "category": "physical", "source": "doc_scene" },
+    { "id": "clue_yellow_man", "label": "黄雨衣·瘸腿人影", "text": "叶山目击：后巷跑出的人影穿着亮黄色雨衣，肩膀宽，走路一瘸一拐。", "category": "testimony", "source": "doc_interview" },
+    { "id": "clue_no_umbrella", "label": "被告未带伞", "text": "叶山供述：当晚没带伞、没穿雨衣，一路小跑回家。", "category": "testimony", "source": "doc_interview" },
+    { "id": "clue_receipt_2200", "label": "小票 22:00", "text": "便利店小票：22时00分购买关东煮（5品）。店员确认其未带伞、未穿雨衣。", "category": "physical", "source": "doc_receipt" },
+    { "id": "clue_kura_quarrel", "label": "仓田与店主争吵", "text": "半月前仓田与被害人激烈争吵，涉及『还钱』『烧店』等字眼。", "category": "background", "source": "doc_police" },
+    { "id": "clue_kura_limp", "label": "仓田瘸腿", "text": "仓田右腿有旧伤，行走时明显一瘸一拐。", "category": "background", "source": "doc_police" },
+    { "id": "clue_kura_debt", "label": "欠款300万+威胁字条", "text": "仓田累计借款300万逾期未还。账本夹页字条：『月底再不还钱，就烧了你的店。——仓田』", "category": "physical", "source": "doc_ledger" }
+  ],
+  "findings": [
+    {
+      "id": "finding_time_lie",
+      "label": "目击时间不成立",
+      "text": "目击者声称21:00看到『逃跑』，但死亡推定时刻为22:30——目击时间与法医结论直接冲突，证词在时间上不可靠。"
+    },
+    {
+      "id": "finding_coat_fact",
+      "label": "雨衣从未离开仓库",
+      "text": "被告的蓝色雨衣案发时干燥地挂在仓库衣帽钩上，且拉链损坏无法穿着；小票与店员证言还表明被告当晚未带伞、未穿雨衣。所谓『穿雨衣逃跑的被告』，不存在。"
+    },
+    {
+      "id": "finding_figure_kura",
+      "label": "人影特征指向仓田",
+      "text": "目击描述的黄雨衣人影：肩膀宽、走路一瘸一拐。仓田铁夫右腿旧伤、明显跛行——人影特征与仓田高度吻合。"
+    },
+    {
+      "id": "finding_motive",
+      "label": "仓田的动机与威胁",
+      "text": "仓田累计欠款300万逾期未还，账本夹页有『烧店』威胁字条，半月前曾与被害人激烈争吵。因债务而行凶的动机与威胁行为确凿。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q_time",
+      "title": "目击时间的疑点",
+      "prompt": "目击者声称『晚上9点整看到被告逃跑』。哪两条线索能证明这个时间说法站不住脚？",
+      "stage": 1,
+      "requires_clues": ["clue_witness_nine", "clue_death_2230"],
+      "answer": ["clue_witness_nine", "clue_death_2230"],
+      "hint": "把目击者所说的时间，和法医给出的时间放在一起对照。",
+      "on_correct": {
+        "finding": "finding_time_lie",
+        "script": [
+          { "op": "say", "who": "char_su", "text": "9点和22点30分……差了整整一个半小时！目击者看到的『逃跑』，根本不可能是案发瞬间！" },
+          { "op": "say", "who": "char_zhang", "text": "证词的第一步，塌了。" }
+        ]
+      },
+      "on_wrong": { "message": "这两条线索放在一起还不能说明问题。想想：有没有材料记录了『死亡真正发生的时间』？" }
+    },
+    {
+      "id": "q_coat",
+      "title": "雨衣悖论",
+      "prompt": "目击者称逃跑者穿着被告的蓝色雨衣。哪两条线索能证明被告当晚不可能穿它？",
+      "stage": 2,
+      "requires_clues": ["clue_witness_blue", "clue_coat_hook"],
+      "answer": ["clue_witness_blue", "clue_coat_hook"],
+      "hint": "目击者说雨衣穿在逃跑者身上；现场勘查说雨衣在哪里、是什么状态？",
+      "on_correct": {
+        "finding": "finding_coat_fact",
+        "script": [
+          { "op": "say", "who": "char_su", "text": "雨衣一直挂在仓库里，还是干的！拉链坏成那样，根本穿不上！" },
+          { "op": "say", "who": "char_zhang", "text": "也就是说——证人口中的『穿蓝雨衣的被告』，从一开始就不存在。" }
+        ]
+      },
+      "on_wrong": { "message": "再看看『雨衣』本身：它案发时在哪里？是湿的，还是干的？" }
+    },
+    {
+      "id": "q_figure",
+      "title": "人影的真面目",
+      "prompt": "既然逃跑者不是被告，那么目击描述的『黄雨衣人影』究竟是谁？用两条线索锁定他的身份特征。",
+      "stage": 3,
+      "requires_findings": ["finding_coat_fact"],
+      "requires_clues": ["clue_yellow_man", "clue_kura_limp"],
+      "answer": ["clue_yellow_man", "clue_kura_limp"],
+      "hint": "『肩膀宽、一瘸一拐』——当铺的常客里，有谁符合这个特征？",
+      "locked_hint": "《被告询问笔录》里记着叶山当晚看到的人影；《刑事调查报告》里则写着某位常客的体貌特征——这两处似乎还有没被摘录的关键细节。",
+      "on_correct": {
+        "finding": "finding_figure_kura",
+        "script": [
+          { "op": "say", "who": "char_zhang", "text": "肩膀宽、一瘸一拐……查一下当铺的常客名单，有一个人完全符合。" },
+          { "op": "say", "who": "char_su", "text": "仓田铁夫！右腿旧伤，走路一瘸一拐！" }
+        ]
+      },
+      "on_wrong": { "message": "两条线索：一条描述人影的体貌特征，一条描述某个人的体貌特征。找出重叠的那个人。" }
+    },
+    {
+      "id": "q_motive",
+      "title": "杀意从何而来",
+      "prompt": "动机是定罪的关键。哪三条线索能完整说明仓田铁夫的杀人动机？",
+      "stage": 4,
+      "requires_findings": ["finding_figure_kura"],
+      "requires_clues": ["clue_kura_debt", "clue_kura_quarrel"],
+      "answer": ["finding_figure_kura", "clue_kura_debt", "clue_kura_quarrel"],
+      "hint": "结论卡也可以是推理的『材料』——把『人影=仓田』和债务纠纷放在一起。",
+      "locked_hint": "先弄清人影的身份——身份一旦锁定，警方就会补充调取账目材料，那里或许写着一笔算不清的债。",
+      "on_correct": {
+        "finding": "finding_motive",
+        "script": [
+          { "op": "say", "who": "char_zhang", "text": "欠款300万、威胁烧店、半月前的争吵——再加上案发当晚出现在现场的人影。" },
+          { "op": "say", "who": "char_su", "text": "动机、时机、特征，全都指向同一个人……！" }
+        ]
+      },
+      "on_wrong": { "message": "除了债务与威胁，别忘了把『当晚出现在现场的人影』也放进这条链里。" }
+    }
+  ],
+  "accusation": {
+    "prompt": "真相只有一个。请指认本案真凶，并提交能够支撑定罪的完整证据链。",
+    "suspects": ["char_yeshan", "char_dojima", "char_kura"],
+    "culprit": "char_kura",
+    "required_findings": ["finding_coat_fact", "finding_motive"],
+    "on_correct": {
+      "script": [
+        { "op": "fx", "type": "flash_text", "text": "异议！" },
+        { "op": "say", "who": "char_zhang", "text": "裁判长阁下！被告叶山凉当晚22点整在便利店购物，未带伞、未穿雨衣；他的蓝色雨衣干燥地挂在仓库衣帽钩上——他根本不可能冒雨作案！" },
+        { "op": "say", "who": "char_zhang", "text": "真正在案发时刻出现在仓库后巷的，是那个『穿着黄色雨衣、走路一瘸一拐』的男人——" },
+        { "op": "say", "who": "char_zhang", "text": "仓田铁夫！你欠下300万巨债，写下烧店的威胁字条。案发当晚，你破坏监控、潜入仓库行窃，被店主发现后痛下杀手！" },
+        { "op": "say", "who": "char_kura", "text": "……那条腿，是我这辈子最恨的东西。要不是它跑不快……我本来可以当作什么都没发生。" },
+        { "op": "say", "who": "char_kanjo", "text": "……动机、时机、体貌特征，证据链完整闭合。控方……撤回对叶山凉的指控。" },
+        { "op": "say", "who": "char_bailu", "text": "本庭宣判：被告·叶山凉——无罪！" },
+        { "op": "fx", "type": "flash" },
+        { "op": "say", "who": "char_tadokoro", "text": "仓田铁夫，你被逮捕了！" },
+        { "op": "say", "who": "char_yeshan", "text": "张律师……谢谢！拉面！我请你一辈子！！" }
+      ]
+    },
+    "on_wrong": {
+      "message": "法庭不接受没有证据链支撑的指控。请检查：凶手人选是否正确？支撑结论是否完整？",
+      "script": [
+        { "op": "say", "who": "char_kanjo", "text": "……辩方律师，你的指控缺乏依据。这样的『真相』，法庭不会认可。" }
+      ]
+    }
+  }
+}

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NZCP · 案宗推理</title>
+<meta name="description" content="案宗推理：阅读卷宗、红笔圈选关键词、串联线索板上的证据，用推理议题还原真相并结案陈词的网页版法庭推理游戏。">
+<meta name="theme-color" content="#17100c">
+<link rel="stylesheet" href="css/style.css?v=21">
+</head>
+<body>
+
+<!-- ============ 标题 / 选案 ============ -->
+<section id="screen-title" class="screen active">
+  <div class="title-wrap">
+    <div class="brand">
+      <div class="brand-mark">NZCP</div>
+      <h1>案宗推理</h1>
+      <p class="brand-sub">NZCP DOSSIER DETECTIVE ｜ 阅读案宗 · 串联线索 · 逆转真相</p>
+    </div>
+
+    <div class="case-list-head">
+      <span class="case-list-title">案件档案库</span>
+      <div class="case-list-actions">
+        <button class="btn btn-ghost" id="btnCreateCase">新建剧本</button>
+        <label class="btn btn-ghost" for="importFile">导入剧本 (.json)</label>
+        <input id="importFile" type="file" accept=".json,application/json" hidden>
+      </div>
+    </div>
+    <div id="caseList" class="case-list"></div>
+    <p class="title-foot">NZCP Script Format 2.0 ｜ 案宗阅读 · 线索链推理 · 自动存档</p>
+  </div>
+</section>
+
+<!-- ============ 游戏主界面：案宗阅读 ============ -->
+<section id="screen-game" class="screen">
+  <header class="game-topbar">
+    <div class="topbar-left">
+      <button class="btn btn-ghost" id="btnBackTitle" title="返回案件库（进度已自动保存）">‹ 案件库</button>
+      <span class="case-no" id="caseNo">#A-01</span>
+      <span class="case-name" id="caseName">案件名称</span>
+      <span class="case-episode" id="caseEpisode">第1话</span>
+    </div>
+    <div class="topbar-right">
+      <span class="save-flag" id="saveFlag">进度已保存</span>
+      <button class="btn btn-accuse" id="btnAccuse" disabled>结案陈词</button>
+    </div>
+  </header>
+
+  <div class="game-body">
+    <aside class="doc-sidebar">
+      <div class="sidebar-title">卷宗目录</div>
+      <nav id="docList" class="doc-list"></nav>
+      <div class="sidebar-foot">
+        <span id="docProgress">0 / 0 份已阅</span>
+      </div>
+    </aside>
+
+    <main class="doc-reader" id="docReader">
+      <div class="reader-empty">
+        <p>从左侧目录选择一份卷宗开始阅读</p>
+        <p class="reader-empty-sub">卷宗里没有一个字是废话——发现不对劲的字眼，点它、用红笔圈出来；带金线的段落可整段摘录</p>
+      </div>
+    </main>
+  </div>
+
+  <footer class="game-bottombar">
+    <button class="btn btn-tray" id="btnBoard">线索板 <span class="badge" id="clueCount">0</span></button>
+    <button class="btn btn-tray" id="btnQuestions">推理议题 <span class="badge badge-hot" id="questionCount">0</span></button>
+    <div class="bottom-stats">
+      <span>失误 <b id="statMistakes">0</b></span>
+      <span>提示 <b id="statHints">0</b></span>
+    </div>
+  </footer>
+</section>
+
+<!-- ============ 线索板 + 推理 ============ -->
+<section id="screen-board" class="screen">
+  <header class="game-topbar board-topbar">
+    <div class="topbar-left">
+      <button class="btn btn-ghost" id="btnBackTitle2" title="返回案件库（进度已自动保存）">‹ 案件库</button>
+      <button class="btn btn-ghost" id="btnBackDossier">← 返回案宗</button>
+      <span class="case-name">线索板</span>
+    </div>
+    <div class="topbar-right">
+      <span class="board-hint">点击卡片选中，组合出真相</span>
+      <button class="btn btn-accuse" id="btnAccuse2" disabled>结案陈词</button>
+    </div>
+  </header>
+
+  <div class="board-body">
+    <div class="corkboard" id="boardCards"></div>
+    <aside class="question-panel">
+      <div class="qpanel-title">推理议题</div>
+      <div id="questionList" class="question-list"></div>
+      <div class="qpanel-foot" id="qpanelFoot">已完成全部议题后，即可结案陈词</div>
+    </aside>
+  </div>
+
+  <footer class="deduction-bar" id="deductionBar">
+    <div class="deduction-idle" id="deductionIdle">选择一个推理议题开始组合线索</div>
+    <div class="deduction-active hidden" id="deductionActive">
+      <div class="ded-prompt" id="dedPrompt"></div>
+      <div class="ded-slot" id="dedSlot"></div>
+      <div class="ded-actions">
+        <button class="btn btn-ghost" id="btnHint">提示</button>
+        <button class="btn btn-verdict" id="btnSubmitDeduction">这就是真相！</button>
+      </div>
+    </div>
+  </footer>
+</section>
+
+<!-- ============ 对话演出层 ============ -->
+<div id="dialogLayer" class="dialog-layer hidden">
+  <div class="fx-flash hidden" id="fxFlash"></div>
+  <div class="dialog-box" id="dialogBox">
+    <div class="dialog-name" id="dialogName"></div>
+    <div class="dialog-text" id="dialogText"></div>
+    <div class="dialog-next" id="dialogNext">▼</div>
+  </div>
+</div>
+
+<!-- ============ 新建剧本（粘贴导入）模态 ============ -->
+<div id="createModal" class="modal hidden">
+  <div class="modal-card create-card">
+    <div class="modal-head">
+      <h2>新建剧本 · 粘贴 JSON</h2>
+      <button class="modal-close" id="btnCloseCreate">×</button>
+    </div>
+    <div class="create-guide">
+      <p>剧本为 <b>NZCP Script Format 2.0</b> 的 JSON 文本。把任意 AI 助手按官方创作规范生成的完整剧本粘贴到下面，点「校验并导入」——校验通过即入案件库，立即可玩。</p>
+      <p class="create-guide-sub">创作规范随本项目开源（<span>docs/format-spec.md</span> 格式规范 · <span>docs/case-design-guide.md</span> 设计方法论）。若 AI 生成的剧本质量不佳，把这两份文档整份喂给它再试；Python 用户也可用 scripts/validate_case.py 本地预检。</p>
+    </div>
+    <textarea id="pasteArea" class="paste-area" placeholder="在此粘贴完整的剧本 JSON 文本……" spellcheck="false"></textarea>
+    <div class="create-foot">
+      <button class="btn btn-primary" id="btnPasteImport">校验并导入</button>
+      <span class="paste-hint" id="pasteHint">校验通过即上架本机案件库（浏览器本地保存，刷新不丢）</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 结案模态 ============ -->
+<div id="accuseModal" class="modal hidden">
+  <div class="modal-card accuse-card">
+    <div class="modal-head">
+      <h2>最终推理 · 结案陈词</h2>
+      <button class="modal-close" id="btnCloseAccuse">×</button>
+    </div>
+    <p class="accuse-prompt" id="accusePrompt"></p>
+    <div class="accuse-step">
+      <div class="step-label">第一步 · 指认真凶</div>
+      <div class="suspect-grid" id="suspectGrid"></div>
+    </div>
+    <div class="accuse-step">
+      <div class="step-label">第二步 · 提交证据链（勾选支撑结论）</div>
+      <div class="finding-grid" id="findingGrid"></div>
+    </div>
+    <div class="accuse-foot">
+      <button class="btn btn-verdict btn-lg" id="btnSubmitAccuse">真相只有一个！</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 结算模态 ============ -->
+<div id="resultModal" class="modal hidden">
+  <div class="modal-card result-card">
+    <h2 class="result-title">案件解决</h2>
+    <div class="result-rank" id="resultRank">S</div>
+    <div class="result-stats" id="resultStats"></div>
+    <div class="accuse-foot">
+      <button class="btn btn-primary" id="btnBackTitle">返回案件库</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="js/engine.js?v=21"></script>
+<script src="js/ui.js?v=21"></script>
+<script src="js/main.js?v=21"></script>
+</body>
+</html>

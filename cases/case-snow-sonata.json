@@ -1,0 +1,445 @@
+{
+  "format_version": "2.0",
+  "case": {
+    "id": "case-snow-sonata",
+    "title": "逆转的雪夜琴声",
+    "episode": "第1话",
+    "subtitle": "～琴声为证，雪夜无声～",
+    "author": "NZCP 官方示例（渐进式·圈选版）",
+    "difficulty": 4,
+    "play_time": "约 60-80 分钟",
+    "summary": "平安夜的琴房，钢琴家倒在节拍器之下。门禁记录天衣无缝，证词里的琴声与尖叫却处处透着说不通——雪夜回荡的《冬之奏鸣曲》，究竟是谁在演奏？",
+    "prologue": [
+      { "op": "narrate", "text": "12月24日，平安夜。雪，下了一整晚。" },
+      { "op": "narrate", "text": "琴房大厦三层，「白鸟琴房」。钢琴家白鸟澄江倒在血泊之中——凶器，是一只黄铜节拍器。" },
+      { "op": "narrate", "text": "明晚，本该是她亡夫白鸟遥的十周年纪念音乐会。" },
+      { "op": "say", "who": "char_proc", "text": "现场有被告的指纹，有目击的人影。桐生葵，你的毕业独奏会，怕是等不到了。" },
+      { "op": "say", "who": "char_zhang", "text": "小铃，把案卷全部调出来。" },
+      { "op": "say", "who": "char_su", "text": "好嘞！——海帆哥，这次的卷宗，可有点厚。" },
+      { "op": "say", "who": "char_zhang", "text": "卷宗里没有一个字是废话。读不出来的，就深挖；发现不对劲的字眼，拿红笔圈出来。" }
+    ],
+    "epilogue": [
+      { "op": "narrate", "text": "——次年冬。" },
+      { "op": "narrate", "text": "《冬之奏鸣曲》公演。节目单署名：音无彻（作）／白鸟遥（补笔）。开演那晚，雪停了。" },
+      { "op": "say", "who": "char_kiri", "text": "老师，我把这场演出的票，放在您的相框前了。" },
+      { "op": "narrate", "text": "琴房里，那台留声机被擦得锃亮，摆在原先的位置上。滴答，滴答——像雪落下来的声音。" },
+      { "op": "say", "who": "char_su", "text": "海帆哥，下一份卷宗……好像已经到了。" }
+    ]
+  },
+
+  "characters": [
+    { "id": "char_zhang", "name": "张海帆", "role": "辩护律师" },
+    { "id": "char_su", "name": "苏小铃", "role": "律师助手" },
+    { "id": "char_kiri", "name": "桐生葵", "role": "被告" },
+    { "id": "char_oto", "name": "音无彻", "role": "调音师" },
+    { "id": "char_nya", "name": "根津真造", "role": "邻居·证人" },
+    { "id": "char_proc", "name": "九条凛", "role": "检察官" },
+    { "id": "char_judge", "name": "白泽", "role": "审判长" },
+    { "id": "char_chigusa", "name": "白鸟澄江", "role": "被害人" },
+    { "id": "char_yukio", "name": "白鸟遥", "role": "亡夫·作曲家" }
+  ],
+
+  "documents": [
+    {
+      "id": "doc_brief",
+      "type": "record",
+      "title": "案件受理概要",
+      "meta": { "no": "K-1124", "author": "辖区署刑事科", "date": "12月25日" },
+      "initial": true,
+      "blocks": [
+        { "type": "heading", "text": "接警与案情" },
+        { "type": "para", "text": "12月24日21时52分，琴房大厦楼下邻居根津真造报警。警方22时整到场：三层「白鸟琴房」内，知名钢琴家白鸟澄江（62岁）俯卧于钢琴旁，头部遭钝器重击。", "clue": "clue_death_window" },
+        { "type": "para", "text": "现场认定为凶器的是一只黄铜节拍器，重约2公斤，其上检出与被告桐生葵一致的指纹。桐生葵（24岁），死者弟子兼助理，当晚到过琴房，因毕业独奏会人选之事与死者素有龃龉。", "clue": "clue_weapon_metro" },
+        { "type": "para", "text": "控方主张：桐生葵因独奏会之争怀恨，于当晚返回行凶。邻居证词称案发后有可疑人影逃离大楼。" },
+        { "type": "dig", "text": "卷宗末页还钉着值勤警员的一页随记，字迹潦草……", "reveal": [
+          { "type": "para", "text": "22点整随警到场——琴房里那台老留声机竟还在转，唱针在末轨空转，咯吱咯吱响个不停。按理说，主人早该把它停下了。", "clue": "clue_record_spinning", "keywords": ["空转"] }
+        ] },
+        { "type": "sign", "text": "受理编号：第K-1124号" }
+      ]
+    },
+    {
+      "id": "doc_lesson",
+      "type": "record",
+      "title": "琴房登记与门禁记录",
+      "meta": { "no": "K-1124-02", "author": "琴房大厦物业", "date": "12月24日" },
+      "initial": true,
+      "blocks": [
+        { "type": "heading", "text": "当日登记" },
+        { "type": "para", "text": "课程登记：桐生葵，19:00-19:30（被告本人签字）。门禁显示其于19时33分刷卡离开。", "clue": "clue_lesson_end", "keywords": ["19时33分"] },
+        { "type": "para", "text": "调律预约：音无彻，20:00-21:00（驻楼调音师，常规例检）。门禁显示其于20时01分刷卡进入。", "clue": "clue_tuner_appointment", "keywords": ["音无彻", "20时01分"] },
+        { "type": "para", "text": "门禁备注：20时01分之后至接警时止，无任何刷卡记录。", "clue": "clue_door_log", "keywords": ["无任何刷卡记录"] },
+        { "type": "sign", "text": "琴房大厦物业管理处·存档" }
+      ]
+    },
+    {
+      "id": "doc_witness",
+      "type": "testimony",
+      "title": "邻居证词笔录",
+      "meta": { "no": "K-1124-03", "author": "记录人：田所刑警", "date": "12月25日" },
+      "initial": true,
+      "blocks": [
+        { "type": "heading", "text": "证人：根津真造（71岁，二层住户）" },
+        { "type": "quote", "text": "「21点05分，我上阳台抽烟——楼上琴声一直没停，断断续续，像同一个人在练同一支曲子。」", "clue": "clue_piano_playing", "keywords": ["琴声一直没停"] },
+        { "type": "quote", "text": "「21点35分，一声尖叫，吓我一激灵——琴声跟着就停了。」", "clue": "clue_scream", "keywords": ["一声尖叫", "21点35分"] },
+        { "type": "quote", "text": "「跟着楼梯上一阵急促脚步。我从猫眼里看见个穿灰呢大衣的人影，怀里抱着个方形的东西，一溜烟下楼去了。」", "clue": "clue_gray_figure", "keywords": ["灰呢大衣", "方形的东西"] },
+        { "type": "dig", "text": "老人捻着茶杯盖，似乎还有一句闲话没说完……", "reveal": [
+          { "type": "quote", "text": "「对了警官，还有句闲话——那曲子我越听越耳熟，后来想起来，是白鸟先生那首《冬之奏鸣曲》。十来年前电台里老放。」", "clue": "clue_song_heard", "keywords": ["越听越耳熟", "冬之奏鸣曲"] }
+        ] },
+        { "type": "sign", "text": "记录人：辖区署刑警 田所" }
+      ]
+    },
+    {
+      "id": "doc_scene",
+      "type": "report",
+      "title": "现场勘查笔录",
+      "meta": { "no": "K-1124-04", "author": "鉴识科", "date": "12月25日" },
+      "initial": true,
+      "blocks": [
+        { "type": "heading", "text": "现场勘查" },
+        { "type": "para", "text": "黄铜节拍器倒伏于钢琴东侧。基座检出被告桐生葵指纹（比对结论：上课接触遗留）；打击面未检出任何指纹。", "clue": "clue_metro_print", "keywords": ["基座检出", "打击面未检出"] },
+        { "type": "para", "text": "琴凳翻倒。凳内储物格呈开启状，内无物品，格底衬垫留有长年压痕。", "clue": "clue_bench_empty", "keywords": ["内无物品", "长年压痕"] },
+        { "type": "para", "text": "唱机唱盘上置有黑胶唱片一张，标签：《冬之奏鸣曲》（B面）。现场未寻获该唱片的封套。", "clue": "clue_record_found", "keywords": ["唱盘上置有"] },
+        { "type": "para", "text": "大门呈反锁状态，锁体完好，无强行闯入痕迹。" },
+        { "type": "sign", "text": "勘查人：鉴识科·存档" }
+      ]
+    },
+    {
+      "id": "doc_kiri",
+      "type": "testimony",
+      "title": "被告询问笔录",
+      "meta": { "no": "K-1124-05", "author": "记录人：田所刑警", "date": "12月25日" },
+      "initial": true,
+      "blocks": [
+        { "type": "heading", "text": "被告：桐生葵" },
+        { "type": "quote", "text": "「19点半下课我就走了。老师还催我：『晚上有客人，你别逗留。』我19点50到家，给老师发过一条报平安的消息——她没回。」", "clue": "clue_kiri_left", "keywords": ["晚上有客人"] },
+        { "type": "quote", "text": "「我当晚穿米白色羽绒服。老师送我到琴房门口——这是她的习惯，不管谁来，都送到门口。」", "clue": "clue_kiri_coat", "keywords": ["米白色羽绒服", "都送到门口"] },
+        { "type": "dig", "text": "被告的证词里，还压着一句没说完的哽咽……", "reveal": [
+          { "type": "quote", "text": "「老师上周悄悄告诉我——她在琴凳里发现了『先生的字迹』，是比什么都要紧的东西。她说，要亲手交给一个『等了太久的人』。……警官，对不起，我只说到这儿了。」", "clue": "clue_bench_secret", "keywords": ["先生的字迹", "等了太久的人"] }
+        ] },
+        { "type": "sign", "text": "记录人：辖区署刑警 田所" }
+      ]
+    },
+    {
+      "id": "doc_autopsy",
+      "type": "report",
+      "title": "法医补充鉴定",
+      "meta": { "no": "K-1124-06", "author": "法医科", "date": "12月26日" },
+      "initial": false,
+      "requires_findings": ["f_kiri_out"],
+      "blocks": [
+        { "type": "heading", "text": "补充鉴定意见" },
+        { "type": "para", "text": "琴房大厦当日因锅炉检修，18时起全楼停暖；案发时段室内气温约4℃。", "clue": "clue_no_heat", "keywords": ["全楼停暖"] },
+        { "type": "para", "text": "依低温环境尸温下降模型修正：死亡时间由「20时至21时之间」修正为20时15分至20时50分之间。", "clue": "clue_death_precise", "keywords": ["20时50分"] },
+        { "type": "para", "text": "死者右手掌心握有数枚琴键毛毡碎屑——倒下时，手还搭在琴凳边缘。" },
+        { "type": "sign", "text": "法医科·补充鉴定书" }
+      ]
+    },
+    {
+      "id": "doc_gramophone",
+      "type": "report",
+      "title": "唱机调律工作单",
+      "meta": { "no": "K-1124-07", "author": "琴房管理处", "date": "12月24日" },
+      "initial": false,
+      "requires_findings": ["f_kiri_out"],
+      "blocks": [
+        { "type": "heading", "text": "调律·唱机保养记录" },
+        { "type": "para", "text": "12月24日15时，驻楼调音师音无彻为白鸟琴房留声机更换唱针，试机正常后离开。", "clue": "clue_needle_replaced", "keywords": ["试机正常"] },
+        { "type": "para", "text": "备注：琴房档案柜的备用钥匙，一向由驻楼调音师保管。", "clue": "clue_archive_key", "keywords": ["调音师保管"] },
+        { "type": "sign", "text": "调律工作单·存根" }
+      ]
+    },
+    {
+      "id": "doc_interview",
+      "type": "news",
+      "title": "旧刊·纪念特辑《她与冬之奏鸣曲》",
+      "meta": { "no": "ARCH-07", "author": "《乐坛周刊》", "date": "十年前冬刊" },
+      "initial": false,
+      "requires_findings": ["f_song_heard"],
+      "blocks": [
+        { "type": "heading", "text": "专访节选" },
+        { "type": "quote", "text": "「记者：明晚的纪念音乐会，您会演奏《冬之奏鸣曲》吗？——白鸟澄江：不会。它只属于我们两个人。此生此世，我绝不公开演奏它。」", "clue": "clue_vow", "keywords": ["绝不公开演奏"] },
+        { "type": "para", "text": "特辑按语：白鸟澄江与作曲家白鸟遥结婚四十年。白鸟先生十年前病逝，身后仅留此一部未公演遗作。" },
+        { "type": "sign", "text": "《乐坛周刊》·资料室存档" }
+      ]
+    },
+    {
+      "id": "doc_album",
+      "type": "other",
+      "title": "唱片内页·曲目解说",
+      "meta": { "no": "B-107", "author": "唱片公司", "date": "1998年" },
+      "initial": false,
+      "requires_findings": ["f_song_heard"],
+      "blocks": [
+        { "type": "heading", "text": "《冬之奏鸣曲》曲目解说" },
+        { "type": "para", "text": "B面为《冬之奏鸣曲》终乐章，全长约四十分钟：钢琴独白启幕，室内乐渐次加入，终章是一段女高音咏叹，以裂帛般的高音收束全曲。", "clue": "clue_soprano", "keywords": ["女高音咏叹", "裂帛般的高音"] },
+        { "type": "sign", "text": "唱片公司·内页说明" }
+      ]
+    },
+    {
+      "id": "doc_oto",
+      "type": "testimony",
+      "title": "调音师询问笔录",
+      "meta": { "no": "K-1124-08", "author": "记录人：田所刑警", "date": "12月26日" },
+      "initial": false,
+      "requires_findings": ["f_time_fake"],
+      "blocks": [
+        { "type": "heading", "text": "证人：音无彻（55岁，驻楼调音师）" },
+        { "type": "quote", "text": "「20点整我进琴房调律，21点结束。她还请我喝了杯热茶，送我到门口。之后我就直接回家了——我一个人住，没人作证，但这就是实话。」", "clue": "clue_oto_alive", "keywords": ["送我到门口"] },
+        { "type": "quote", "text": "「当晚？我穿了件灰呢大衣。天冷——大厦停着暖，人冻得手指发僵，弦都调不准。」", "clue": "clue_oto_gray", "keywords": ["灰呢大衣"] },
+        { "type": "dig", "text": "他把手拢在袖子里——还有一句没交代干净的话……", "reveal": [
+          { "type": "quote", "text": "「琴房那把备用钥匙？……师傅房的规矩，备用钥匙一直由调音师保管。但我21点以后，绝没有回去过。」", "clue": "clue_oto_key", "keywords": ["备用钥匙"] }
+        ] },
+        { "type": "sign", "text": "记录人：辖区署刑警 田所" }
+      ]
+    },
+    {
+      "id": "doc_archive",
+      "type": "record",
+      "title": "档案外借登记卡",
+      "meta": { "no": "ARCH-1024", "author": "唱片公司资料室", "date": "1998年" },
+      "initial": false,
+      "requires_findings": ["f_time_fake"],
+      "blocks": [
+        { "type": "heading", "text": "资料室外借存根" },
+        { "type": "para", "text": "1998年冬，外借存根：《冬之奏鸣曲》母带参考黑胶一张（编号B-107），借用人签名：音无彻。次年1月归还，唱片完好。", "clue": "clue_card_name", "keywords": ["音无彻"] },
+        { "type": "sign", "text": "唱片公司资料室·存根" }
+      ]
+    },
+    {
+      "id": "doc_magazine",
+      "type": "news",
+      "title": "旧音乐周刊剪报",
+      "meta": { "no": "ARCH-0731", "author": "《音乐周报》", "date": "1996年第14期" },
+      "initial": false,
+      "requires_findings": ["f_time_fake"],
+      "blocks": [
+        { "type": "heading", "text": "署名之争·报道存档" },
+        { "type": "para", "text": "1996年第14期报道：作曲家白鸟遥的旧搭档公开质疑《冬之奏鸣曲》署名：「那段旋律的骨架，是我熬了三个冬天写下的。」随后争执不了了之，当事人自乐坛销声匿迹。", "clue": "clue_plagiarism", "keywords": ["三个冬天", "不了了之"] },
+        { "type": "sign", "text": "剪报存档·资料室" }
+      ]
+    },
+    {
+      "id": "doc_letter",
+      "type": "letter",
+      "title": "白鸟先生的手信",
+      "meta": { "no": "K-1124-附", "author": "白鸟遥", "date": "绝笔" },
+      "initial": false,
+      "requires_findings": ["f_bench"],
+      "blocks": [
+        { "type": "heading", "text": "手信·未寄出" },
+        { "type": "para", "text": "澄江：若我没能亲口说出——那份曲谱的每一段，都留着『彻』的批注与体温。当年，是我用一套房子买断了他的沉默。", "clue": "clue_confession", "keywords": ["买断了他的沉默"] },
+        { "type": "para", "text": "你若看见它，请替我还给他。琴凳，是它最后的家。", "clue": "clue_give_back", "keywords": ["替我还给他"] },
+        { "type": "sign", "text": "白鸟遥，绝笔" }
+      ]
+    }
+  ],
+
+  "clues": [
+    { "id": "clue_death_window", "label": "死亡推定20-21时", "text": "法医初判：白鸟澄江死亡于当晚20时至21时之间。", "category": "background", "initial": true, "source": "doc_brief" },
+    { "id": "clue_weapon_metro", "label": "凶器：黄铜节拍器", "text": "凶器为现场黄铜节拍器，重约2公斤，其上检出与被告桐生葵一致的指纹。", "category": "physical", "initial": true, "source": "doc_brief" },
+    { "id": "clue_record_spinning", "label": "留声机整夜空转", "text": "警方22时到场时，留声机仍在转动，唱针在末轨空转——主人已死，机器却没停。", "category": "physical", "source": "doc_brief" },
+    { "id": "clue_lesson_end", "label": "葵19:33已离开", "text": "课程登记与门禁一致：桐生葵于19时33分刷卡离开琴房。", "category": "background", "source": "doc_lesson" },
+    { "id": "clue_tuner_appointment", "label": "20点访客：音无彻", "text": "调音师音无彻于20时01分刷卡进入，预约时段20:00-21:00——此后再无任何人刷卡。", "category": "background", "source": "doc_lesson" },
+    { "id": "clue_door_log", "label": "此后无刷卡记录", "text": "20时01分之后至接警时止，门禁无任何刷卡记录——有人进出，只能靠钥匙。", "category": "background", "source": "doc_lesson" },
+    { "id": "clue_piano_playing", "label": "琴声持续至深夜", "text": "邻居证词：21点05分起，楼上琴声一直没停。", "category": "testimony", "source": "doc_witness" },
+    { "id": "clue_scream", "label": "21:35的尖叫", "text": "邻居证词：21点35分一声尖叫，琴声随之停止。", "category": "testimony", "source": "doc_witness" },
+    { "id": "clue_gray_figure", "label": "灰呢大衣的人影", "text": "尖叫后，一名穿灰呢大衣的人影抱着方形的东西匆匆下楼。", "category": "testimony", "source": "doc_witness" },
+    { "id": "clue_song_heard", "label": "琴声是《冬之奏鸣曲》", "text": "深挖证词：老人越听越耳熟——雪夜回荡的，是白鸟遥的《冬之奏鸣曲》。", "category": "testimony", "source": "doc_witness" },
+    { "id": "clue_metro_print", "label": "指纹：基座有·打击面无", "text": "节拍器基座检出葵的指纹（上课接触遗留），打击面却未检出任何指纹。", "category": "physical", "source": "doc_scene" },
+    { "id": "clue_bench_empty", "label": "琴凳暗格空了", "text": "琴凳储物格开启，内无物品，衬垫留有长年压痕——曾长期存放某物。", "category": "physical", "source": "doc_scene" },
+    { "id": "clue_record_found", "label": "唱盘上的黑胶", "text": "唱盘上压着《冬之奏鸣曲》黑胶（B面），现场却找不到封套。", "category": "physical", "source": "doc_scene" },
+    { "id": "clue_kiri_left", "label": "老师催她先走", "text": "葵19:30下课后离开，死者还催她：「晚上有客人，你别逗留。」", "category": "testimony", "source": "doc_kiri" },
+    { "id": "clue_kiri_coat", "label": "葵穿米白羽绒服", "text": "葵当晚穿米白色羽绒服——与目击的灰呢大衣人影对不上。", "category": "testimony", "source": "doc_kiri" },
+    { "id": "clue_bench_secret", "label": "琴凳藏『先生的字迹』", "text": "深挖证词：死者上周说，琴凳里藏着『先生的字迹』，要亲手交给一个『等了太久的人』。", "category": "testimony", "source": "doc_kiri" },
+    { "id": "clue_no_heat", "label": "当晚全楼停暖", "text": "琴房大厦18时起全楼停暖，案发时段室温约4℃。", "category": "background", "source": "doc_autopsy" },
+    { "id": "clue_death_precise", "label": "死亡修正≤20:50", "text": "依低温尸温模型修正：死亡时间为20时15分至20时50分之间——早于「21点35分的尖叫」。", "category": "background", "source": "doc_autopsy" },
+    { "id": "clue_needle_replaced", "label": "音无当天换过唱针", "text": "案发当天15时，音无彻为琴房留声机更换唱针并试机正常——最熟悉这台机器的人。", "category": "physical", "source": "doc_gramophone" },
+    { "id": "clue_archive_key", "label": "档案柜钥匙归调音师", "text": "琴房档案柜的备用钥匙，一向由驻楼调音师保管。", "category": "physical", "source": "doc_gramophone" },
+    { "id": "clue_vow", "label": "她誓不公开演奏此曲", "text": "十年前专访：白鸟澄江立誓，此生此世绝不公开演奏《冬之奏鸣曲》。", "category": "testimony", "source": "doc_interview" },
+    { "id": "clue_soprano", "label": "终章女高音咏叹", "text": "唱片内页：B面终乐章以一段女高音咏叹收束——裂帛般的高音。", "category": "background", "source": "doc_album" },
+    { "id": "clue_oto_alive", "label": "他称21点离开", "text": "音无彻自称21点结束调律，死者送他到门口——此时她应还活着。", "category": "testimony", "source": "doc_oto" },
+    { "id": "clue_oto_gray", "label": "他当晚穿灰呢大衣", "text": "音无彻自述：当晚穿灰呢大衣——与目击人影衣着一致。", "category": "testimony", "source": "doc_oto" },
+    { "id": "clue_oto_key", "label": "他保管琴房备用钥匙", "text": "深挖证词：琴房备用钥匙一直由调音师保管——不刷卡也能进出。", "category": "testimony", "source": "doc_oto" },
+    { "id": "clue_card_name", "label": "98年借卡上的签名", "text": "1998年资料室外借存根：《冬之奏鸣曲》参考黑胶，借用人签名：音无彻。", "category": "physical", "source": "doc_archive" },
+    { "id": "clue_plagiarism", "label": "二十五年前的署名之争", "text": "1996年报道：旧搭档公开质疑《冬之奏鸣曲》署名——「那是我熬了三个冬天写下的。」争执不了了之，当事人销声匿迹。", "category": "background", "source": "doc_magazine" },
+    { "id": "clue_confession", "label": "白鸟遥的认罪信", "text": "手信：曲谱留着『彻』的批注与体温；当年是白鸟遥用一套房子买断了他的沉默。", "category": "physical", "source": "doc_letter" },
+    { "id": "clue_give_back", "label": "嘱托把手稿还他", "text": "手信嘱托：看见曲谱，请替我还给他——琴凳是它最后的家。", "category": "physical", "source": "doc_letter" }
+  ],
+
+  "findings": [
+    { "id": "f_kiri_out", "label": "琴房里另有其人", "text": "桐生葵19时33分即已离开；20点后，唯一在琴房中的只有调音师音无彻。" },
+    { "id": "f_song_heard", "label": "雪夜琴声：《冬之奏鸣曲》", "text": "根津听出，雪夜的琴声是白鸟遥的《冬之奏鸣曲》——而唱盘上压着的，恰好就是这张唱片。" },
+    { "id": "f_never_play", "label": "她绝不演奏的曲子", "text": "唱盘上是《冬之奏鸣曲》，而白鸟澄江立誓此生绝不公开演奏它——雪夜的琴声，绝非出自她的双手。" },
+    { "id": "f_scream_record", "label": "尖叫来自唱片", "text": "21点35分的「尖叫」，是唱片终章的女高音咏叹。琴声与尖叫同生同止——全是伪造的「生之假象」。" },
+    { "id": "f_time_fake", "label": "死亡时刻被他伪造", "text": "主人已死，留声机整夜空转；能开档案柜取唱片、又刚亲手换过唱针的，只有持钥匙的调音师音无彻。" },
+    { "id": "f_bench", "label": "琴凳里少了手稿", "text": "琴凳暗格曾长年存放『先生的字迹』，如今空空如也——凶手带走了它。" },
+    { "id": "f_motive", "label": "二十五年前的真相", "text": "《冬之奏鸣曲》原是音无彻熬了三个冬天的曲子。手稿与认罪信一旦交出，尘封二十五年的署名之争将重见天日——她却要让曲子永远沉睡。" }
+  ],
+
+  "questions": [
+    {
+      "id": "q_lesson",
+      "title": "下课后，琴房里有谁",
+      "stage": 1,
+      "prompt": "门禁与登记簿记得最老实——用它们证明：葵早已离开，20点后的琴房里另有其人。",
+      "requires_clues": ["clue_lesson_end", "clue_tuner_appointment"],
+      "answer": ["clue_lesson_end", "clue_tuner_appointment"],
+      "hint": "两份记录：一个19时33分，一个20时01分。",
+      "locked_hint": "《琴房登记与门禁记录》已入档——时间线就写在那两行登记里。",
+      "on_correct": {
+        "finding": "f_kiri_out",
+        "script": [
+          { "op": "narrate", "text": "19时33分。门禁的墨迹，干干净净。" },
+          { "op": "say", "who": "char_su", "text": "海帆哥，葵走之后进琴房的……只有调音师一个人。" }
+        ]
+      },
+      "on_wrong": { "message": "登记簿和门禁是最老实的两份材料——谁几点走的、谁几点来的，一字不差地圈出来。" }
+    },
+    {
+      "id": "q_song",
+      "title": "雪夜的琴声",
+      "stage": 2,
+      "prompt": "根津听到的琴声，究竟弹的是什么？把证词里挖出来的东西凑齐。",
+      "requires_findings": ["f_kiri_out"],
+      "requires_clues": ["clue_piano_playing", "clue_song_heard"],
+      "answer": ["clue_piano_playing", "clue_song_heard"],
+      "hint": "老人的耳朵不会骗人——证词里还有一句闲话，深挖下去。",
+      "locked_hint": "根津大爷的证词还有没挖透的细节——他的耳朵比眼睛可靠。再「深挖」一句试试。",
+      "on_correct": {
+        "finding": "f_song_heard",
+        "script": [
+          { "op": "say", "who": "char_su", "text": "是《冬之奏鸣曲》！根津大爷的耳朵果然靠得住。" },
+          { "op": "say", "who": "char_zhang", "text": "……可白鸟老师，怎么会弹她绝不公演的曲子？" }
+        ]
+      },
+      "on_wrong": { "message": "证词读完了？老人的耳朵里还压着一句闲话——别放过「深挖」的机会。" }
+    },
+    {
+      "id": "q_vow",
+      "title": "她绝不弹的曲子",
+      "stage": 2,
+      "prompt": "唱盘上的唱片，撞上了她十年前立下的誓言——雪夜的琴声是她的吗？",
+      "requires_findings": ["f_song_heard"],
+      "requires_clues": ["clue_record_found", "clue_vow"],
+      "answer": ["clue_record_found", "clue_vow"],
+      "hint": "一张是勘查笔录里的物证登记，一张是十年前的专访——它们说的是同一首曲子。",
+      "locked_hint": "明晚就是纪念音乐会——旧刊专访已调档入卷，唱盘上那张唱片也还在勘查记录里躺着。",
+      "on_correct": {
+        "finding": "f_never_play",
+        "script": [
+          { "op": "say", "who": "char_zhang", "text": "她立誓绝不演奏——那么雪夜里那架琴，是替谁在响？" },
+          { "op": "fx", "type": "flash" }
+        ]
+      },
+      "on_wrong": { "message": "把勘查笔录里的唱片，和专访里她的誓言放在一起——同一首曲子，两种说法。" }
+    },
+    {
+      "id": "q_scream",
+      "title": "裂帛般的「尖叫」",
+      "stage": 3,
+      "prompt": "那声尖叫，真是从琴房里的人喉咙里发出来的吗？",
+      "requires_findings": ["f_never_play"],
+      "requires_clues": ["clue_scream", "clue_soprano"],
+      "answer": ["clue_scream", "clue_soprano"],
+      "hint": "琴声与「尖叫」同时停止——这个世界上，什么东西既有琴声又有尖叫？",
+      "locked_hint": "《唱片内页·曲目解说》已入档——「尖叫」与「琴声」的关系，值得把两份材料放在一起再听一遍。",
+      "on_correct": {
+        "finding": "f_scream_record",
+        "script": [
+          { "op": "say", "who": "char_su", "text": "尖叫……在唱片里？！" },
+          { "op": "say", "who": "char_zhang", "text": "琴声与「尖叫」同生同止——因为它们本来就长在同一张唱片上。" }
+        ]
+      },
+      "on_wrong": { "message": "想想「尖叫」为什么与琴声同时停止——四十分钟的B面里，藏着人声。" }
+    },
+    {
+      "id": "q_time",
+      "title": "会自己转的留声机",
+      "stage": 3,
+      "prompt": "主人已死，留声机却整夜空转——三件材料合在一起：唱片是谁放上去的？",
+      "requires_findings": ["f_scream_record"],
+      "requires_clues": ["clue_record_spinning", "clue_needle_replaced", "clue_archive_key"],
+      "answer": ["clue_record_spinning", "clue_needle_replaced", "clue_archive_key"],
+      "hint": "三样东西：空转的唱针、新换的唱针、档案柜的钥匙。",
+      "locked_hint": "受理概要末页的警员随记（记得深挖）、唱机工作单、还有那把钥匙——谁能在20时50分之后让留声机转起来？",
+      "on_correct": {
+        "finding": "f_time_fake",
+        "script": [
+          { "op": "say", "who": "char_zhang", "text": "死亡时刻，是他亲手用一张唱片伪造的。" },
+          { "op": "narrate", "text": "档案柜、唱针、空转的留声机——线头，全部收紧。" }
+        ]
+      },
+      "on_wrong": { "message": "能在20时50分后让留声机转起来的，必须同时满足两件事：进得了档案柜，也懂这台唱机。" }
+    },
+    {
+      "id": "q_bench",
+      "title": "琴凳里少的东西",
+      "stage": 2,
+      "prompt": "勘查登记与被告的哽咽互为印证——琴凳暗格里，到底少了什么？",
+      "requires_findings": ["f_kiri_out"],
+      "requires_clues": ["clue_bench_empty", "clue_bench_secret"],
+      "answer": ["clue_bench_empty", "clue_bench_secret"],
+      "hint": "开启的储物格＋长年压痕＝曾藏一物；藏的是什么，只有被告听过。",
+      "locked_hint": "现场勘查的登记项，与被告笔录里没说完的那句哽咽——两处都请看仔细。",
+      "on_correct": {
+        "finding": "f_bench",
+        "script": [
+          { "op": "say", "who": "char_su", "text": "「先生的字迹」……不见了。" },
+          { "op": "say", "who": "char_zhang", "text": "凶手带走了一样东西。找动机，就去找它。" }
+        ]
+      },
+      "on_wrong": { "message": "现场那格空抽屉，和被告没说完的那句话——「先生的字迹」去了哪里？" }
+    },
+    {
+      "id": "q_motive",
+      "title": "等了太久的人",
+      "stage": 4,
+      "prompt": "手信、剪报、失踪的手稿——他为什么要带走「先生的字迹」？",
+      "requires_findings": ["f_bench", "f_time_fake"],
+      "requires_clues": ["clue_confession", "clue_plagiarism"],
+      "answer": ["f_bench", "clue_confession", "clue_plagiarism"],
+      "hint": "署名之争＋买断沉默＋永远沉睡的曲子＝他唯一的执念。",
+      "locked_hint": "手信与旧刊剪报都已入档。署名、沉默、买断——把那个「等了太久的人」的二十五年串起来。",
+      "on_correct": {
+        "finding": "f_motive",
+        "script": [
+          { "op": "narrate", "text": "二十五年前未署名的三个冬天，一封信，一次买断——与一间再也安静不下来的琴房。" },
+          { "op": "say", "who": "char_zhang", "text": "全部串起来了。可以结案了，小铃。" }
+        ]
+      },
+      "on_wrong": { "message": "把白鸟先生的信、旧周刊的报道和失踪的手稿放在一起——他在害怕什么，又在等待什么？" }
+    }
+  ],
+
+  "accusation": {
+    "prompt": "谁杀了白鸟澄江？请提交同时支撑「作案手法」与「动机」的完整证据链。",
+    "suspects": ["char_kiri", "char_oto", "char_nya"],
+    "culprit": "char_oto",
+    "required_findings": ["f_time_fake", "f_motive"],
+    "on_correct": {
+      "script": [
+        { "op": "fx", "type": "flash_text", "text": "异议！" },
+        { "op": "say", "who": "char_zhang", "text": "检察官阁下，请看这位「唯一有条件的人」——档案柜钥匙在他手里，唱针是他亲手换的，而死亡发生在他独处的房间里！" },
+        { "op": "say", "who": "char_proc", "text": "荒谬！他21点就离开了——死者在21点35分还发出过尖叫！" },
+        { "op": "say", "who": "char_zhang", "text": "不。法医的低温模型写得很清楚：死亡不晚于20时50分。那声「尖叫」——是唱片终章的女高音。琴声与尖叫，都是他放下的一张唱片。" },
+        { "op": "narrate", "text": "法庭哗然。" },
+        { "op": "say", "who": "char_zhang", "text": "而且他没能走出这栋楼——门禁在他之后无任何刷卡记录，能不刷卡进出的，只有备用钥匙的保管人。根津先生看到的灰呢大衣，正穿着他自己承认的那一件。" },
+        { "op": "say", "who": "char_proc", "text": "他……他为什么要回来？！" },
+        { "op": "say", "who": "char_zhang", "text": "因为唱针在空转。三个冬天的曲子，不能在唱针底下磨一整夜——音无先生，我说得对吗？" },
+        { "op": "narrate", "text": "全场的目光中，调音师缓缓摘下了帽子。" },
+        { "op": "say", "who": "char_oto", "text": "……那年冬天，遥来找我，说曲子能卖一套房的价格。我签了字，拿了钱，从此再没写过一个音符。" },
+        { "op": "say", "who": "char_oto", "text": "二十五年了。她约我调律，说要把「先生的字迹」还给我——却还说，曲子从此收进土里，谁也不许再听。" },
+        { "op": "say", "who": "char_oto", "text": "我等这曲子等了半辈子……她说让它永远睡下去。手起，手落。我自己都不知道，那是几时发生的。" },
+        { "op": "say", "who": "char_oto", "text": "只求一件事——让《冬之奏鸣曲》，用我的名字公演一次。就一次。" },
+        { "op": "say", "who": "char_judge", "text": "……本庭宣判：被告桐生葵，无罪。音无彻，当场逮捕。" },
+        { "op": "fx", "type": "shake" }
+      ]
+    },
+    "on_wrong": {
+      "message": "证据链还不完整——「他是怎么伪造时刻的」「他为什么下手」，两条都齐了吗？",
+      "script": [
+        { "op": "say", "who": "char_proc", "text": "辩方律师，直觉不能代替证据。" }
+      ]
+    }
+  }
+}

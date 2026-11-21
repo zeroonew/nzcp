@@ -1,0 +1,553 @@
+{
+  "format_version": "2.0",
+  "case": {
+    "id": "case-fog-gallery",
+    "title": "逆转的雾夜画廊",
+    "episode": "第2话",
+    "subtitle": "～真迹沉默，赝品在说谎～",
+    "author": "NZCP 官方（高难·三重翻转版）",
+    "difficulty": 5,
+    "play_time": "约 90-120 分钟",
+    "summary": "暴雨夜，警报撕裂雾雨美术馆的闭馆寂静：馆长倒在展室，镇馆名画不翼而飞。现场的手套、消失的四十分钟、滴水不漏的第一发现人——每一环证据，都咬合得过于完美。",
+    "prologue": [
+      { "op": "narrate", "text": "12月14日，暴雨转雾。雾雨美术馆，闭馆后的21时47分。" },
+      { "op": "narrate", "text": "展室三的防盗警报撕裂了整栋楼的安静。安保主任破门而入——馆长柏木鉴康倒在展室中央，后脑的血混着雨水渗进地缝。" },
+      { "op": "narrate", "text": "墙上的镇馆之宝，翠川吟舟的《雾雨城下·冬》，只剩一只空画框。" },
+      { "op": "say", "who": "char_proc", "text": "有前科的修复师，现场遗留的手套，整整四十分钟的下落不明。张律师，这案子连雾都比它干净。" },
+      { "op": "say", "who": "char_su", "text": "海帆哥，这次的卷宗……厚得能当枕头。" },
+      { "op": "say", "who": "char_zhang", "text": "小铃，记住——这一次，卷宗里连标点都可能是假的。" },
+      { "op": "say", "who": "char_zhang", "text": "包括那份『受理概要』。" }
+    ],
+    "epilogue": [
+      { "op": "narrate", "text": "——次年，春。" },
+      { "op": "narrate", "text": "《雾雨城下·冬》真迹自海外查获归还。修复成果展如期开幕——展出的，却是那幅高精仿。" },
+      { "op": "narrate", "text": "展签只有一行：『摹本·无名氏作——本案第一号证物，与一堂鉴赏课。』" },
+      { "op": "narrate", "text": "美术馆正门挂上了新的馆训，是柏木凛亲手写的——『看画，先看人。』" },
+      { "op": "say", "who": "char_su", "text": "海帆哥，下一份卷宗到了——这次的，好像是从雾里捞出来的。" }
+    ]
+  },
+
+  "characters": [
+    { "id": "char_zhang", "name": "张海帆", "role": "辩护律师" },
+    { "id": "char_su", "name": "苏小铃", "role": "律师助手" },
+    { "id": "char_proc", "name": "九条凛", "role": "检察官" },
+    { "id": "char_judge", "name": "白泽", "role": "审判长" },
+    { "id": "char_sasame", "name": "笹目周吾", "role": "被告·修复装裱师", "desc": "29岁。手艺全馆第一，三年前因画廊盗窃获缓刑。案发当晚在馆，事后一度失联四十分钟。" },
+    { "id": "char_saginuma", "name": "鹭沼恭平", "role": "安保主任·第一发现人", "desc": "45岁。前警视厅搜查一课刑事，因证物室失窃丑闻离职。案发当晚值前厅岗，第一个『发现』现场。" },
+    { "id": "char_rin", "name": "柏木凛", "role": "馆长之女·运营主管", "desc": "32岁。与父亲激烈争执过，两个月前为父亲投保三亿人寿险。" },
+    { "id": "char_mamiya", "name": "间宫纱枝", "role": "首席策展人", "desc": "54岁。为美术馆奉献二十年，案发两个月前赴海外带展。" },
+    { "id": "char_kashiwagi", "name": "柏木鉴康", "role": "被害人·馆长", "desc": "68岁。著名收藏家，以『鉴赏之眼』闻名。有周四闭馆独自夜巡的习惯。" }
+  ],
+
+  "documents": [
+    {
+      "id": "doc_brief",
+      "type": "record",
+      "title": "案件受理概要",
+      "meta": { "no": "K-1125", "author": "辖区署刑事科", "date": "12月15日" },
+      "initial": true,
+      "blocks": [
+        { "type": "heading", "text": "接警与案情" },
+        { "type": "para", "text": "12月14日夜，雾雨美术馆闭馆后。21时47分，展室三防盗警报骤然拉响——安保主任鹭沼恭平声称第一时间赶到，发现馆长倒地、名画失窃。", "clue": "c_alert_time", "keywords": ["21时47分"] },
+        { "type": "para", "text": "馆长柏木鉴康（68岁）倒在展室中央，后脑遭钝器重击，当场死亡。", "clue": "c_scene_basic" },
+        { "type": "para", "text": "镇馆之宝、翠川吟舟的《雾雨城下·冬》（估值三亿）失窃，画框完好留于墙上。", "clue": "c_painting_basic" },
+        { "type": "para", "text": "现场遗落鹿皮手套一只，检出修复装裱师笹目周吾的DNA。笹目三年前因画廊盗窃案获缓刑，案发当晚在馆，警报前后一度失联四十分钟，再度现身时浑身湿透。" },
+        { "type": "para", "text": "柏木馆长有雷打不动的习惯：每逢周四闭馆日，独自留馆巡视至深夜——本周四，正是12月14日。", "clue": "c_curator_habit", "keywords": ["每逢周四", "独自留馆"] },
+        { "type": "para", "text": "控方主张：笹目周吾趁暴雨夜监守自盗，行窃时被夜巡的馆长撞破，遂杀害馆长、携画从消防梯逃逸。" },
+        { "type": "dig", "text": "卷宗末页钉着值勤警员的一页手写随记，字迹被雨水洇过……", "reveal": [
+          { "type": "para", "text": "随警备注：到场时展室正门由内反闩，是撬开的。消防梯侧门门禁完好、仍处反锁——同事嘀咕：这楼里，人是怎么进去的，又是怎么出来的？", "clue": "c_barred_door", "keywords": ["由内反闩", "怎么出来的"] }
+        ] },
+        { "type": "sign", "text": "受理编号：第K-1125号" }
+      ]
+    },
+    {
+      "id": "doc_floor",
+      "type": "record",
+      "title": "美术馆平面与门禁记录",
+      "meta": { "no": "K-1125-02", "author": "雾雨美术馆·物业处", "date": "12月15日" },
+      "initial": true,
+      "blocks": [
+        { "type": "heading", "text": "当日门禁" },
+        { "type": "para", "text": "馆长柏木鉴康于21时05分刷卡入馆，径往展馆区——此后再无他的任何刷卡记录。", "clue": "c_gate_kashiwagi", "keywords": ["21时05分", "径往展馆区"] },
+        { "type": "para", "text": "修复装裱师笹目周吾20时52分刷卡入馆（地下修复室无定位基站）；此后直至21时55分，再无其任何刷卡记录——警方认定其间四十分钟行踪不明。", "clue": "c_gate_sasame", "keywords": ["20时52分", "行踪不明"] },
+        { "type": "para", "text": "安保主任鹭沼恭平18时整刷卡上岗，值前厅。另录：21时02分，设备间门禁有一次安保级授权卡刷卡——系统日志未记持卡人姓名。" },
+        { "type": "heading", "text": "馆区结构说明" },
+        { "type": "para", "text": "展室三位于西侧，展室正门朝内走廊；外侧仅连消防梯。消防梯门为常闭电磁锁，馆外无法开启；且其闩体构造决定，门无法从外侧上闩。设备间紧邻展室三东墙，内设恒温恒湿机组，与展室三共用一套吊顶夹层。", "clue": "c_fireescape_lock", "keywords": ["常闭电磁锁", "无法从外侧上闩"] },
+        { "type": "para", "text": "馆内布防说明：展柜钥匙存放于库房双人保险柜；进入库房需门禁与钥匙双认证；布展期间画作移出，须安保主任在场复核。" },
+        { "type": "sign", "text": "雾雨美术馆物业管理处·存档" }
+      ]
+    },
+    {
+      "id": "doc_saginuma",
+      "type": "testimony",
+      "title": "第一发现人证词",
+      "meta": { "no": "K-1125-03", "author": "记录人：田所刑警", "date": "12月15日" },
+      "initial": true,
+      "blocks": [
+        { "type": "heading", "text": "证人：鹭沼恭平（45岁，安保主任）" },
+        { "type": "quote", "text": "「我在这个馆守了七年门。每晚闭馆后我都值前厅岗——那晚雨那么大，外面连条狗都没有，我一步也没有离开。」", "clue": "c_alibi_claim", "keywords": ["一步也没有离开"] },
+        { "type": "quote", "text": "「21点47分警报响了，我赶到展室三，门推不开。撞开进去——馆长倒在地上，画没了。我第一眼就看见：门闩，是从里面插上的。凶手不可能走正门。警官，去查消防梯吧。」", "clue": "c_barred_claim", "keywords": ["从里面插上", "去查消防梯"] },
+        { "type": "quote", "text": "「我干过十一年刑事，破过展馆失窃案。这种手，我一眼就认得出是内贼——查笹目那小子的账，准没错。他有过前科，你们是知道的。」" },
+        { "type": "sign", "text": "记录人：辖区署刑警 田所" }
+      ]
+    },
+    {
+      "id": "doc_autopsy",
+      "type": "report",
+      "title": "尸检与现场勘查报告",
+      "meta": { "no": "K-1125-04", "author": "鉴识科·法医科", "date": "12月16日" },
+      "initial": true,
+      "blocks": [
+        { "type": "heading", "text": "法医结论" },
+        { "type": "para", "text": "死者后脑受单次钝器重击，创口与展柜旁陈列的青铜镇纸吻合，一击毙命。低温模型推定：死亡发生在21时10分至21时40分之间。", "clue": "c_death_window", "keywords": ["青铜镇纸", "21时10分", "21时40分"] },
+        { "type": "heading", "text": "现场勘查" },
+        { "type": "para", "text": "现场遗落鹿皮手套一只，为左手款，内侧检出笹目周吾的DNA；同批检出馆长的血迹喷溅未沾染手套——手套疑为死后抛落。", "clue": "c_glove_scene", "keywords": ["左手款", "DNA", "死后抛落"] },
+        { "type": "para", "text": "画框完好留于墙上，挂钩无崩口，卸画手法干净利落；现场无翻乱痕迹，展柜、钱包与馆长随身怀表均未被动过。" },
+        { "type": "dig", "text": "报告装订夹层里，还压着鉴识科一段没归档的备注……", "reveal": [
+          { "type": "para", "text": "手套磨损备注：该手套指尖内侧磨损集中于指腹，属惯用左手者经年佩戴的旧痕；而DNA仅能证明『接触过』。此手套为修复室公用品，进出修复室者皆可接触。", "clue": "c_glove_wear", "keywords": ["惯用左手", "经年佩戴", "公用品"] }
+        ] },
+        { "type": "sign", "text": "鉴识科·存档" }
+      ]
+    },
+    {
+      "id": "doc_sasame",
+      "type": "testimony",
+      "title": "被告询问笔录",
+      "meta": { "no": "K-1125-05", "author": "记录人：田所刑警", "date": "12月15日" },
+      "initial": true,
+      "blocks": [
+        { "type": "heading", "text": "被告：笹目周吾" },
+        { "type": "quote", "text": "「那晚我在地下修复室赶工。地下两层没有信号，我埋头贴衬布，一抬头快十点了。除湿机坏了半个月没人修，地下走廊全是积水——我的雨衣，就是蹭那点水湿的。」", "clue": "c_raincoat_wet", "keywords": ["没有信号", "积水"] },
+        { "type": "quote", "text": "「手套是我车间的，挂在门后，全馆谁修复谁取用。鹿皮手套，物证袋里那只——我认得，是我去年换的那批。可它整天挂在门后，碰过它的手没有一百也有八十。」" },
+        { "type": "quote", "text": "「三年前的事，我认罪，缓刑我也服满了。档案你们调过——我用了三年，才把这双手洗干净重新摸画。警官，画要是真的，我偷它做什么？」", "clue": "c_prior_record", "keywords": ["三年前的事", "偷它做什么"] },
+        { "type": "para", "text": "附：修复师年度技能考核影像调档——笹目周吾持镊与排笔全程使用右手，操作评级全馆第一。", "clue": "c_sasame_right", "keywords": ["全程使用右手"] },
+        { "type": "dig", "text": "被告在笔录末尾顿了很久，才补上最后一句……", "reveal": [
+          { "type": "quote", "text": "「馆长先生上个月找过我，说下月二十号办修复成果展，头一件就是给《雾雨城下·冬》做红外和透光检测。他说——要让他这辈子最得意的一幅画，见一见真身。这馆里，只有我的手艺够格。」", "clue": "c_sasame_hint", "keywords": ["见一见真身", "只有我的手艺够格"] }
+        ] },
+        { "type": "sign", "text": "记录人：辖区署刑警 田所" }
+      ]
+    },
+    {
+      "id": "doc_restore",
+      "type": "record",
+      "title": "修复室工作日志",
+      "meta": { "no": "K-1125-09", "author": "修复室·笹目周吾", "date": "12月13日" },
+      "initial": false,
+      "requires_findings": ["f_time_gap"],
+      "blocks": [
+        { "type": "heading", "text": "本月排期" },
+        { "type": "para", "text": "12月20日：镇馆之画《雾雨城下·冬》红外与透光检测·修复成果展预演。馆长批示已签：『就按笹目说的办。让它见见光——我得知道，这些年被谁动过手脚。』", "clue": "c_test_plan", "keywords": ["12月20日", "动过手脚"] },
+        { "type": "para", "text": "检测设备11月底已调试完毕。红外底片、透光灯箱均已就位。馆长另批：检测当日全馆闭馆，只留修复室与馆长在场。" },
+        { "type": "para", "text": "备注：镇馆之画上一次离墙是三个月前的例行除尘；两个月前的10月8日，全馆闭馆半日做库房保养——那日修复室未排工。" },
+        { "type": "sign", "text": "修复室·存档" }
+      ]
+    },
+    {
+      "id": "doc_canvas",
+      "type": "report",
+      "title": "画框残留物化验报告",
+      "meta": { "no": "K-1125-11", "author": "辩方委托·材料研究所", "date": "12月19日" },
+      "initial": false,
+      "requires_findings": ["f_case_against"],
+      "blocks": [
+        { "type": "heading", "text": "化验结论" },
+        { "type": "para", "text": "画框残留碎屑经检验：现代机织帆布，纤维排列均匀，张力一致——成画不过数年。案发当晚挂在墙上的《雾雨城下·冬》，是高精仿。", "clue": "c_fake_canvas", "keywords": ["现代机织帆布", "高精仿"] },
+        { "type": "para", "text": "颜料层检出合成树脂与钛白成分——一百年前的矿物颜料里，不该有它们的影子。", "clue": "c_paint_layer", "keywords": ["合成树脂"] },
+        { "type": "para", "text": "挂钩胶痕剥离分析：新旧两层。上层胶的固化程度，指向两个月前后——换画，就发生在那段时间里。", "clue": "c_glue_layers", "keywords": ["两层", "两个月前后"] },
+        { "type": "sign", "text": "材料研究所·第113号化验单" }
+      ]
+    },
+    {
+      "id": "doc_rin",
+      "type": "testimony",
+      "title": "柏木凛询问笔录",
+      "meta": { "no": "K-1125-06", "author": "记录人：田所刑警", "date": "12月17日" },
+      "initial": false,
+      "requires_findings": ["f_case_against"],
+      "blocks": [
+        { "type": "heading", "text": "证人：柏木凛（32岁，馆长之女·运营主管）" },
+        { "type": "quote", "text": "「两个月前，我为父亲投保了三亿人寿险。案发前一周，我刚替他缴了第三期保费——警官，账目都在这里，你们尽管查。」", "clue": "c_insurance", "keywords": ["三亿", "第三期"] },
+        { "type": "quote", "text": "「受益人栏我填的是雾雨美术馆修缮基金。这馆是我父亲的心血——保险赔付的钱一分不进柏木家的口袋，我本人分文不得。父亲签字之前就认可了这一条。」", "clue": "c_insurance_beneficiary", "keywords": ["修缮基金", "分文不得"] },
+        { "type": "para", "text": "附·值夜员工补录：案发前一周，曾见柏木凛在馆长室与父亲争执，拍过桌子，摔门而去。" },
+        { "type": "quote", "text": "「那天我吼的是——『要卖就卖你的股份！那幅画，想都别想！』馆里的周转我比你清楚，可父亲这辈子答应过翠川先生的遗族，那幅画绝不出馆。」", "clue": "c_quarrel_topic", "keywords": ["那幅画", "想都别想"] },
+        { "type": "para", "text": "另：案发当晚21时至22时15分，柏木凛在银行保管库办理父亲委托的调档手续，库房登记簿有其签名。" },
+        { "type": "sign", "text": "记录人：辖区署刑警 田所" }
+      ]
+    },
+    {
+      "id": "doc_access",
+      "type": "report",
+      "title": "库房与展柜权限分析",
+      "meta": { "no": "K-1125-07", "author": "专案组·内勤", "date": "12月20日" },
+      "initial": false,
+      "requires_findings": ["f_fake_stolen"],
+      "blocks": [
+        { "type": "heading", "text": "调包条件分析" },
+        { "type": "para", "text": "要在无人察觉的前提下调包墙上名画，须同时满足三重条件：库房门禁权限、展柜钥匙接触权、以及布展期单独在馆的时机。逐一排查近两月全部出入与值班记录——", "clue": "c_three_people", "keywords": ["三重条件"] },
+        { "type": "para", "text": "同时具备三重条件者，近两月仅三人：馆长柏木鉴康、首席策展人间宫纱枝、安保主任鹭沼恭平。" },
+        { "type": "para", "text": "间宫纱枝自10月5日至10月22日在海外带展，护照与登机记录齐全——含10月8日全馆闭馆保养日，人在国外。而馆长本人，不会偷自己的画——他两个月来仍每周亲临展室为宾客讲解那幅画。", "clue": "c_mamiya_abroad", "keywords": ["10月8日", "在海外带展"] },
+        { "type": "sign", "text": "专案组内勤·存档" }
+      ]
+    },
+    {
+      "id": "doc_notebook",
+      "type": "letter",
+      "title": "馆长私人鉴赏笔记",
+      "meta": { "no": "K-1125-08", "author": "柏木鉴康遗物", "date": "整理于12月21日" },
+      "initial": false,
+      "requires_findings": ["f_fake_stolen"],
+      "blocks": [
+        { "type": "heading", "text": "遗物清点·随身笔记（节录）" },
+        { "type": "para", "text": "随身笔记的最后一页排满日期与预约。而在其中一页的角落，压着几行十一月末的小字，笔画很稳，越写越轻——" },
+        { "type": "para", "text": "雪舟在说谎。真雪不会落得这么整齐——每一片，都描过边。等检测灯亮起来的那天，我倒要看看，是谁在替它撒谎。", "clue": "c_note_doubt", "hidden": true },
+        { "type": "dig", "text": "笔记的更深处，还压着一段关于旧年月的自白……", "reveal": [
+          { "type": "para", "text": "四十年前从雾雨港上岸的那三箱画，没走报关——那年馆里穷得揭不开锅，我睁一只眼闭了一只眼。这些年我梦里全是海水。我有什么脸面，去敲警局的门。", "clue": "c_note_origin", "keywords": ["三箱画", "报关"] }
+        ] },
+        { "type": "sign", "text": "遗物清点·专案组封存" }
+      ]
+    },
+    {
+      "id": "doc_mamiya",
+      "type": "testimony",
+      "title": "间宫纱枝证词",
+      "meta": { "no": "K-1125-09", "author": "记录人：田所刑警", "date": "12月22日" },
+      "initial": false,
+      "requires_findings": ["f_insider"],
+      "blocks": [
+        { "type": "heading", "text": "证人：间宫纱枝（54岁，首席策展人）" },
+        { "type": "quote", "text": "「十月中旬，我在馆长室外的走廊里，听见鹭沼先生打电话。他声音压得很低，可走廊静——『尾款到账，就交货。别催，画又不是跑得掉的东西。』我当时只当是旧货商的闲事。」", "clue": "c_phone_call", "keywords": ["尾款到账", "画又不是跑得掉的东西"] },
+        { "type": "para", "text": "（证人临走时又想起一件闲事，犹豫再三还是说了）" },
+        { "type": "para", "text": "鹭沼去年还在为儿子的手术费四处筹钱，愁得半头白发。十一月里却突然阔绰起来，还清了两千八百万的旧债，又全款买下河边的小公寓。同事间谁也没敢问钱是哪来的。", "clue": "c_saginuma_debt", "hidden": true },
+        { "type": "sign", "text": "记录人：辖区署刑警 田所" }
+      ]
+    },
+    {
+      "id": "doc_todabashi",
+      "type": "testimony",
+      "title": "画商戸张克巳证词",
+      "meta": { "no": "K-1125-10", "author": "记录人：田所刑警", "date": "12月22日" },
+      "initial": false,
+      "requires_findings": ["f_insider"],
+      "blocks": [
+        { "type": "heading", "text": "证人：戸张克巳（60岁，古画商）" },
+        { "type": "quote", "text": "「十月初，有人托中间人向我放话：翠川吟舟的雪景，要出。开价好得烫手。可我干这行四十年——那画来路烫手，我没敢接，回绝了。」", "clue": "c_blackmarket_offer", "keywords": ["翠川吟舟的雪景", "来路烫手"] },
+        { "type": "quote", "text": "「后来听说，画最终走了海外的暗盘，买主是谁没人知道，钱是分月结的——上个月，尾款该是结清了。」" },
+        { "type": "sign", "text": "记录人：辖区署刑警 田所" }
+      ]
+    },
+    {
+      "id": "doc_seclog",
+      "type": "report",
+      "title": "安保系统运行日志",
+      "meta": { "no": "K-1125-11", "author": "安防系统·完整调档", "date": "12月23日" },
+      "initial": false,
+      "requires_findings": ["f_insider"],
+      "blocks": [
+        { "type": "heading", "text": "12月14日夜·系统事件（完整版）" },
+        { "type": "para", "text": "21时30分至21时47分：展室三监控信号人为中止，时长十七分钟。日志记录操作卡号，经比对为安保主任专属授权卡——全馆仅此一张。", "clue": "c_cam_off", "keywords": ["21时30分", "专属授权卡"] },
+        { "type": "para", "text": "21时35分：值勤对讲机自动触发短呼，接入端定位为展室三基站——而非前厅。通话内容为十四秒环境杂音。", "clue": "c_walkie_pos", "keywords": ["展室三基站", "十四秒"] },
+        { "type": "para", "text": "21时47分：展室三警报触发模式为『门磁测试』，非真实入侵告警——该指令由控制台手动发送，且仅持有测试权限的卡可选。", "clue": "c_alarm_test", "keywords": ["门磁测试", "手动发送"] },
+        { "type": "sign", "text": "安防系统·原始日志封存" }
+      ]
+    },
+    {
+      "id": "doc_personnel",
+      "type": "record",
+      "title": "鹭沼恭平人事档案",
+      "meta": { "no": "K-1125-12", "author": "人事·警方调档", "date": "12月23日" },
+      "initial": false,
+      "requires_findings": ["f_insider"],
+      "blocks": [
+        { "type": "heading", "text": "档案摘录" },
+        { "type": "para", "text": "鹭沼恭平，45岁。前警视厅刑事部搜查一课刑事，因证物室失窃丑闻离职（当年案件悬而未破）。入馆七年，考评连年优秀。", "clue": "c_ugly_past", "keywords": ["证物室失窃丑闻"] },
+        { "type": "para", "text": "警籍档案·体格栏：佩枪手——左。所附消防训练照片：左手持灭火器、右手掐表。另注：签批文件一律以左手执笔。", "clue": "c_gun_left", "keywords": ["佩枪手", "左手持灭火器"] },
+        { "type": "para", "text": "档案边角有一行旧钢笔批注，笔迹经辨认为前部门主管：『此人深谙侦查反侦查——最安全的谎言，是替真话修一条岔路。』" },
+        { "type": "sign", "text": "人事档案·专案组调档存根" }
+      ]
+    },
+    {
+      "id": "doc_ceiling",
+      "type": "report",
+      "title": "吊顶夹层复勘报告",
+      "meta": { "no": "K-1125-13", "author": "鉴识科·二次勘查", "date": "12月24日" },
+      "initial": false,
+      "requires_findings": ["f_framed"],
+      "blocks": [
+        { "type": "heading", "text": "复勘结论" },
+        { "type": "para", "text": "设备间吊顶检修口与展室三夹层直接连通，管道间隙可容一人匍匐通行——检修口钥匙全馆仅两套：安保主任与物业各持其一。", "clue": "c_ceiling_route", "keywords": ["直接连通", "可容一人"] },
+        { "type": "para", "text": "管道间积尘上有连续的拖擦痕，止于展室三正上方；同批尘样中检出制服呢料纤维与青铜微屑（与凶器镇纸材质一致）。", "clue": "c_dust_trail", "keywords": ["拖擦痕", "正上方"] },
+        { "type": "para", "text": "展室三正上方夹层内发现帆布卷一幅，颜料成分与画框残留碎屑完全一致——『失窃』的画，从未离开这栋楼。", "clue": "c_bundle_found", "keywords": ["帆布卷", "从未离开"] },
+        { "type": "sign", "text": "鉴识科·二次勘查存档" }
+      ]
+    },
+    {
+      "id": "doc_letter",
+      "type": "letter",
+      "title": "未寄出的信",
+      "meta": { "no": "K-1125-14", "author": "柏木鉴康遗物", "date": "整理于12月25日" },
+      "initial": false,
+      "requires_findings": ["f_trick"],
+      "blocks": [
+        { "type": "heading", "text": "信·致凛（未封缄）" },
+        { "type": "para", "text": "「凛：墙上的雪，是假的。我早知道。我没有报警——因为一旦查画，四十年前三箱画也会跟着见光。爸爸犯过的错，不该由这座美术馆陪葬。」", "clue": "c_letter_know", "keywords": ["是假的", "陪葬"] },
+        { "type": "para", "text": "「等二十号检测灯亮起来，我第一件事是把它换下来、封存、登报说明原委；第二件事，是兑现答应过你的事——陪你去海边，把小时候欠你的那些夏天，一个一个还回来。」" },
+        { "type": "para", "text": "「你那天吼得对。画可以没有，人不能没有。——爸爸」" },
+        { "type": "sign", "text": "遗物清点·柏木凛收讫" }
+      ]
+    }
+  ],
+
+  "clues": [
+    { "id": "c_scene_basic", "label": "馆长倒毙展室", "text": "12月14日夜，馆长柏木鉴康被发现倒在展室三，后脑遭重击，当场死亡。", "category": "physical", "initial": true, "source": "doc_brief" },
+    { "id": "c_painting_basic", "label": "镇馆名画失窃", "text": "翠川吟舟《雾雨城下·冬》（估值三亿）案发当晚从展室三消失，画框完好留于墙上。", "category": "physical", "initial": true, "source": "doc_brief" },
+    { "id": "c_curator_habit", "label": "周四的独行夜巡", "text": "柏木馆长每逢周四闭馆日独自留馆巡视至深夜——案发当晚恰是周四。", "category": "background", "source": "doc_brief" },
+    { "id": "c_barred_door", "label": "由内反闩的门", "text": "警方到场时展室正门由内反闩（撬开进入）；消防梯侧门门禁完好仍反锁——人怎么进去的、怎么出来的，无人能解。", "category": "physical", "source": "doc_brief" },
+    { "id": "c_alert_time", "label": "21时47分的警报", "text": "展室三防盗警报于21时47分拉响；安保主任鹭沼恭平自称第一时间赶到，发现馆长倒地、名画失窃。", "category": "physical", "source": "doc_brief" },
+    { "id": "c_gate_kashiwagi", "label": "馆长21时05分入馆", "text": "馆长柏木鉴康21时05分刷卡入馆，径往展馆区——此后再无刷卡记录。", "category": "physical", "source": "doc_floor" },
+    { "id": "c_gate_sasame", "label": "失联的四十分钟", "text": "笹目周吾20时52分刷卡入馆（地下修复室无定位基站）；此后直至21时55分再无刷卡记录——警方认定其间行踪不明。", "category": "physical", "source": "doc_floor" },
+    { "id": "c_fireescape_lock", "label": "走不通的消防梯", "text": "消防梯门为常闭电磁锁，馆外无法开启，且无法从外侧上闩——『从消防梯逃逸』的路线根本不成立。", "category": "physical", "source": "doc_floor" },
+    { "id": "c_alibi_claim", "label": "证词：整晚在前厅", "text": "鹭沼恭平声称当晚雨大，自己在前厅值岗台『一步也没有离开』。", "category": "testimony", "source": "doc_saginuma" },
+    { "id": "c_barred_claim", "label": "证词：门闩在里侧", "text": "鹭沼主动强调门闩从里面插上、凶手不可能走正门，并指给警方『去查消防梯』。", "category": "testimony", "source": "doc_saginuma" },
+    { "id": "c_death_window", "label": "死亡推定21:10-21:40", "text": "后脑单次重击，凶器为展柜旁青铜镇纸；低温模型推定死亡发生在21时10分至21时40分之间。", "category": "physical", "source": "doc_autopsy" },
+    { "id": "c_glove_scene", "label": "现场的手套", "text": "现场遗落左手款鹿皮手套一只，内侧检出笹目的DNA；血迹喷溅未沾染手套，疑为死后抛落。", "category": "physical", "source": "doc_autopsy" },
+    { "id": "c_glove_wear", "label": "手套磨损的秘密", "text": "手套指尖内侧磨损集中于指腹，属惯用左手者经年佩戴的旧痕；手套为修复室公用品，DNA只能证明『接触过』。", "category": "physical", "source": "doc_autopsy" },
+    { "id": "c_raincoat_wet", "label": "雨衣湿的由来", "text": "地下修复室没有信号；除湿机坏了半月，地下走廊全是积水——笹目的雨衣是蹭积水湿的，不是淋雨。", "category": "testimony", "source": "doc_sasame" },
+    { "id": "c_prior_record", "label": "三年前的缓刑", "text": "笹目三年前因画廊盗窃案获缓刑，本人供认不讳——『我用了三年，才把这双手洗干净重新摸画。』", "category": "testimony", "source": "doc_sasame" },
+    { "id": "c_sasame_right", "label": "笹目是右利手", "text": "修复师年度技能考核影像：笹目持镊与排笔全程使用右手，操作评级全馆第一。", "category": "background", "source": "doc_sasame" },
+    { "id": "c_sasame_hint", "label": "馆长的托付", "text": "馆长上月亲口告诉笹目：12月20日要给《雾雨城下·冬》做红外与透光检测——『让它见一见真身』。", "category": "testimony", "source": "doc_sasame" },
+    { "id": "c_test_plan", "label": "12月20日·检测日", "text": "镇馆之画定于12月20日接受红外与透光检测·修复成果展预演。馆长批注：『让它见见光——我得知道，这些年被谁动过手脚。』", "category": "physical", "source": "doc_restore" },
+    { "id": "c_fake_canvas", "label": "失窃画是赝品", "text": "画框残留碎屑为现代机织帆布，成画不过数年——案发当晚墙上的《雾雨城下·冬》是高精仿。", "category": "physical", "source": "doc_canvas" },
+    { "id": "c_paint_layer", "label": "颜料层证伪", "text": "颜料层检出合成树脂与钛白——百年前的矿物颜料里不该有它们。", "category": "physical", "source": "doc_canvas" },
+    { "id": "c_glue_layers", "label": "两层胶痕", "text": "挂钩胶痕剥离分析：新旧两层，上层固化程度指向两个月前后——换画就发生在那段时间。", "category": "physical", "source": "doc_canvas" },
+    { "id": "c_insurance", "label": "三亿人寿险", "text": "柏木凛两个月前为父亲投保三亿人寿险，案发前一周刚缴第三期保费。", "category": "physical", "source": "doc_rin" },
+    { "id": "c_insurance_beneficiary", "label": "受益人另有其人", "text": "保险受益人栏为雾雨美术馆修缮基金（非直系亲属）——柏木凛本人分文不得。", "category": "physical", "source": "doc_rin" },
+    { "id": "c_quarrel_topic", "label": "争执的真意", "text": "案发前一周的争执里，凛吼的是：『要卖就卖你的股份！那幅画，想都别想！』——她护的恰是那幅画。", "category": "testimony", "source": "doc_rin" },
+    { "id": "c_three_people", "label": "调包仅三人可为", "text": "调包须同时满足库房门禁、展柜钥匙、布展期单独在馆三重条件——近两月仅馆长、间宫、鹭沼三人具备。", "category": "physical", "source": "doc_access" },
+    { "id": "c_mamiya_abroad", "label": "间宫远在海外", "text": "间宫纱枝10月5日至10月22日在海外带展（含10月8日闭馆保养日）；馆长则不会偷自己的画——仍在每周亲临讲解。", "category": "physical", "source": "doc_access" },
+    { "id": "c_note_doubt", "label": "雪舟在说谎", "text": "馆长十一月末的笔记：『雪舟在说谎。真雪不会落得这么整齐——每一片，都描过边。』——他早知墙上挂的是赝品。", "category": "background", "source": "doc_notebook" },
+    { "id": "c_note_origin", "label": "三箱画的旧账", "text": "四十年前三箱画未走报关——这是馆长知情却不敢报警的苦衷：查画，就会翻出他自己的旧账。", "category": "background", "source": "doc_notebook" },
+    { "id": "c_phone_call", "label": "交货电话", "text": "十月中旬，间宫听见鹭沼压低声音打电话：『尾款到账，就交货。别催，画又不是跑得掉的东西。』", "category": "testimony", "source": "doc_mamiya" },
+    { "id": "c_saginuma_debt", "label": "还清的两千八百万", "text": "鹭沼去年还在为儿子手术费筹钱；十一月却突然还清两千八百万旧债、全款买下河边公寓——钱从哪来，无人敢问。", "category": "background", "source": "doc_mamiya" },
+    { "id": "c_blackmarket_offer", "label": "黑市的翠川雪景", "text": "十月初有人放话出售翠川吟舟雪景，开价烫手——画商戸张因来路烫手回绝；画最终走海外暗盘，尾款上月结清。", "category": "testimony", "source": "doc_todabashi" },
+    { "id": "c_cam_off", "label": "监控中止十七分钟", "text": "21时30分至21时47分，展室三监控被人为中止；操作卡号经比对为安保主任专属授权卡——全馆仅此一张。", "category": "physical", "source": "doc_seclog" },
+    { "id": "c_walkie_pos", "label": "对讲机的定位", "text": "21时35分，值勤对讲机自动触发十四秒短呼，接入端定位为展室三基站——持机人当时不在前厅。", "category": "physical", "source": "doc_seclog" },
+    { "id": "c_alarm_test", "label": "测试模式的警报", "text": "21时47分的警报为『门磁测试』模式，由控制台手动发送——非真实入侵告警。", "category": "physical", "source": "doc_seclog" },
+    { "id": "c_ugly_past", "label": "证物室旧案", "text": "鹭沼系前警视厅搜查一课刑事，因证物室失窃丑闻离职——那桩失窃，当年悬而未破。", "category": "background", "source": "doc_personnel" },
+    { "id": "c_gun_left", "label": "佩枪手·左", "text": "警籍档案体格栏：佩枪手——左。消防训练照片左手持灭火器、右手掐表，签批以左手执笔——鹭沼恭平是左利手。", "category": "background", "source": "doc_personnel" },
+    { "id": "c_ceiling_route", "label": "头顶的检修口", "text": "设备间吊顶检修口与展室三夹层直接连通，可容一人匍匐通行；检修口钥匙仅安保主任与物业各持一套。", "category": "physical", "source": "doc_ceiling" },
+    { "id": "c_dust_trail", "label": "管道里的拖痕", "text": "管道间积尘上的连续拖擦痕止于展室三正上方；尘样中检出制服呢料纤维与同凶器一致的青铜微屑。", "category": "physical", "source": "doc_ceiling" },
+    { "id": "c_bundle_found", "label": "帆布卷在头顶", "text": "展室三正上方夹层内发现帆布卷，颜料成分与画框残屑完全一致——『失窃』的画从未离开这栋楼。", "category": "physical", "source": "doc_ceiling" },
+    { "id": "c_letter_know", "label": "未寄出的信", "text": "馆长信中自述：『墙上的雪是假的，我早知道。我没报警——因为四十年前三箱画也会跟着见光。爸爸的错，不该由美术馆陪葬。』", "category": "background", "source": "doc_letter" }
+  ],
+
+  "findings": [
+    { "id": "f_time_gap", "label": "迟到的警报", "text": "死亡发生在21时10分至21时40分之间；21时47分才拉响的警报，与死亡之间隔着至少七分钟的沉默——警报响起时，凶手可能早已不在展室。" },
+    { "id": "f_case_against", "label": "如山的『铁证』", "text": "前科、现场手套、失联四十分钟——检方的三环铁证咬合紧密，笹目周吾看似插翅难逃。可链条再漂亮，也只是『表面』。" },
+    { "id": "f_fake_stolen", "label": "被偷走的雪是假的", "text": "残片与颜料同声作证：墙上那幅《雾雨城下·冬》是数年内的高精仿。窃案从根上不成立——除非，偷画的人要毁掉的正是『它是赝品』这个秘密。" },
+    { "id": "f_insider", "label": "调包者藏在馆内", "text": "两层胶痕锁定换画发生在两个月前后；三重权限圈定三人；间宫远在海外、馆长不会偷自己的画——两个月内能无声调包的，只剩案发当晚也在馆内的人。而馆长，早已写下『雪舟在说谎』。" },
+    { "id": "f_rin_clear", "label": "凛的清白", "text": "三亿保险的受益人是美术馆修缮基金，她本人分文不得；那场争执里她吼的是『想都别想』——她护的，恰是那幅画。动机不成立。" },
+    { "id": "f_perfect_lie", "label": "完美的谎言", "text": "21时30分监控被安保专属卡中止；21时35分持机人在展室三而非前厅；21时47分的警报是控制台手动发送的门磁测试。『第一发现人』的证词，从头到尾是一场自导自演。" },
+    { "id": "f_framed", "label": "手套的真话", "text": "手套的旧痕属于惯用左手者；笹目持镊全程右手；鹭沼的佩枪手栏写着『左』。那只手套想说的不是『笹目作案』，而是『有人替他戴上』。" },
+    { "id": "f_trick", "label": "头顶的第四条路", "text": "设备间检修口连通展室三夹层，拖痕止于展室正上方，帆布卷就藏在头顶——门闩从里面插着，因为凶手从未走过那扇门。所谓窃案，是杀人之后的布景。" },
+    { "id": "f_motive", "label": "从赝品到尾款", "text": "黑市放话卖翠川雪景在先，调包真迹在后；『尾款到账就交货』的电话、突然还清的债务，与12月20日的检测日步步相逼——他偷走假画，是为一座将倾的谎，抽掉最后一块砖。" }
+  ],
+
+  "questions": [
+    {
+      "id": "q_alert",
+      "title": "警报响起之前",
+      "stage": 1,
+      "prompt": "概要把警报写成『案发时刻』——真的如此吗？用法医的表和警报的表对一对。",
+      "requires_clues": ["c_death_window", "c_alert_time"],
+      "answer": ["c_death_window", "c_alert_time"],
+      "hint": "两张卡上各有一个时间——它们咬合得上吗？",
+      "on_correct": {
+        "finding": "f_time_gap",
+        "script": [
+          { "op": "say", "who": "char_su", "text": "警报响的时候……馆长可能已经倒下好一会儿了？" },
+          { "op": "say", "who": "char_zhang", "text": "死亡与警报之间，隔着至少七分钟的空白。这七分钟里发生了什么——先记下来。" }
+        ]
+      },
+      "on_wrong": { "message": "把法医的『死亡推定』和概要里那个警报时刻放在一起——两个时间，对不上。" }
+    },
+    {
+      "id": "q_chain",
+      "title": "如山的铁证",
+      "stage": 2,
+      "prompt": "检方的逮捕书上写着『铁证如山』。把构成这座山的材料，一件一件摆上来——先看清它，才谈得上看穿它。",
+      "requires_clues": ["c_prior_record", "c_glove_scene", "c_gate_sasame"],
+      "answer": ["c_prior_record", "c_glove_scene", "c_gate_sasame"],
+      "hint": "前科、手套、四十分钟——检方开庭陈词里念过的三样东西。",
+      "on_correct": {
+        "finding": "f_case_against",
+        "script": [
+          { "op": "say", "who": "char_proc", "text": "看见了？这就是铁证如山。辩方律师，你的当事人一个字都赖不掉。" },
+          { "op": "say", "who": "char_zhang", "text": "链条很漂亮——漂亮得，像是替我们摆好的。" }
+        ]
+      },
+      "on_wrong": { "message": "检察官的『铁证』一共念了三样：案底、现场的手套、那四十分钟。把它们凑齐。" }
+    },
+    {
+      "id": "q_fake",
+      "title": "被偷走的雪",
+      "stage": 3,
+      "prompt": "辩方委托的化验报告到了。它说明这场『盗窃』——从根上就不成立？",
+      "requires_findings": ["f_case_against"],
+      "answer": ["c_fake_canvas", "c_paint_layer"],
+      "hint": "两处材料证据说的是同一件事：墙上的画，不是它声称的那幅。",
+      "locked_hint": "辩方委托的《画框残留物化验报告》已经入档——物证不会撒谎，先听它说。",
+      "on_correct": {
+        "finding": "f_fake_stolen",
+        "script": [
+          { "op": "fx", "type": "flash_text", "text": "矛盾！" },
+          { "op": "say", "who": "char_zhang", "text": "被偷走的雪，是假的！世上没有偷假画的贼——只有急着让假画消失的谎。" }
+        ]
+      },
+      "on_wrong": { "message": "画框上留下的两样东西——碎屑与颜料——各自说了什么年代？它们说的和画签差了一百年。" }
+    },
+    {
+      "id": "q_swap",
+      "title": "换画的下午",
+      "stage": 3,
+      "prompt": "假画是何时、被何人挂上那面墙的——把『何时』『何人有条件』『谁早已知情』三件事钉死。",
+      "requires_findings": ["f_fake_stolen"],
+      "answer": ["c_glue_layers", "c_three_people", "c_mamiya_abroad", "c_note_doubt"],
+      "hint": "胶痕给时间、权限给范围；排除掉不在场的与不偷自家画的；再想想——馆里还有一个人，早就看穿了。",
+      "locked_hint": "《库房与展柜权限分析》与《馆长私人鉴赏笔记》都已入档。调包的窗口、能开那扇窗的手、还有那页笔记——三处都请看仔细。",
+      "on_correct": {
+        "finding": "f_insider",
+        "script": [
+          { "op": "say", "who": "char_su", "text": "两个月前……能换画的就那么几个人。间宫在海外，馆长不会自导自演——" },
+          { "op": "say", "who": "char_zhang", "text": "而馆长的笔记里早写着『雪舟在说谎』。他知情，却沉默了两个星期。" }
+        ]
+      },
+      "on_wrong": { "message": "胶痕的两层告诉了你『何时』；权限名单圈出了可能的『何人』；别漏了那页笔记——还有人比警方更早知道雪是假的。" }
+    },
+    {
+      "id": "q_rin",
+      "title": "凛的清白",
+      "stage": 4,
+      "prompt": "三亿保险、激烈争执——死者的女儿真有杀机吗？把她的『动机』拆开看。",
+      "requires_findings": ["f_fake_stolen"],
+      "answer": ["c_insurance", "c_insurance_beneficiary", "c_quarrel_topic"],
+      "hint": "保险要看得是『受益人』那一栏；争执要听『吼的什么』那一句。",
+      "locked_hint": "《柏木凛询问笔录》已入档——保险合同和那场争执的来龙去脉，都写在她自己的证词里。",
+      "on_correct": {
+        "finding": "f_rin_clear",
+        "script": [
+          { "op": "say", "who": "char_su", "text": "保险的受益人不是她……那场争吵，她护的还是画。" },
+          { "op": "say", "who": "char_zhang", "text": "动机不成立。清掉一个无辜的人，真相的水面就矮了一截。" }
+        ]
+      },
+      "on_wrong": { "message": "三亿保险——钱最后进谁的口袋？争执——她吼出口的是哪一句话？把这两件事连起来看。" }
+    },
+    {
+      "id": "q_lie",
+      "title": "完美证词",
+      "stage": 5,
+      "prompt": "他声称整晚在前厅。让系统日志和门禁制度来对质——案发当晚，这位第一发现人到底在哪、又布置了什么？",
+      "requires_findings": ["f_insider"],
+      "answer": ["c_cam_off", "c_walkie_pos", "c_fireescape_lock", "c_alarm_test"],
+      "hint": "监控被谁中止、对讲机在哪响起、警报是怎么触发的——再加上那条『检方用来指认笹目的逃跑路线』，四件事拆穿一句『一步也没有离开』。",
+      "locked_hint": "《安保系统运行日志》已完整调档，再加上馆区结构与门禁制度的旧档——他证词里的每一句，都值得拿记录对一遍。",
+      "on_correct": {
+        "finding": "f_perfect_lie",
+        "script": [
+          { "op": "say", "who": "char_zhang", "text": "监控在他的专属卡下停了十七分钟；警报是他亲手发出的『测试』。" },
+          { "op": "say", "who": "char_su", "text": "而且对讲机基站作证——21点35分，他根本不在前厅，他在展室三！" }
+        ]
+      },
+      "on_wrong": { "message": "四份记录各揭一句谎：监控、对讲机定位、警报模式、还有消防梯那条『走不通的路线』。他的证词哪一句经得起对质？" }
+    },
+    {
+      "id": "q_glove",
+      "title": "手套的真话",
+      "stage": 6,
+      "prompt": "那只手套想指认笹目——可手套上旧痕的主人，惯用的是哪只手？",
+      "requires_findings": ["f_perfect_lie"],
+      "answer": ["c_glove_wear", "c_gun_left", "c_sasame_right"],
+      "hint": "手套的旧痕属于谁的手？看看档案里那个人的佩枪手，再看看笹目考核影像里的手。",
+      "locked_hint": "《被告询问笔录》附页的考核影像、《鹭沼恭平人事档案》，还有勘查报告里没归档的那段备注——『哪只手』的问题，三处都有答案。",
+      "on_correct": {
+        "finding": "f_framed",
+        "script": [
+          { "op": "say", "who": "char_su", "text": "手套是惯用左手的人长年戴的！笹目全程用右手……" },
+          { "op": "say", "who": "char_zhang", "text": "而鹭沼先生的佩枪手栏里，写着一个『左』字。那只手套，是有人替笹目戴上的。" }
+        ]
+      },
+      "on_wrong": { "message": "手套的磨损长在『哪只手』上？被告持镊用的是哪只手？安保主任的警籍档案里，佩枪手一栏写的又是哪只？" }
+    },
+    {
+      "id": "q_route",
+      "title": "头顶的第四条路",
+      "stage": 7,
+      "prompt": "门闩从里面插着，凶手却来去无踪——展室的头顶，给出了第四条路。把这条路的证据走完。",
+      "requires_findings": ["f_framed"],
+      "answer": ["c_barred_door", "c_ceiling_route", "c_dust_trail", "c_bundle_found"],
+      "hint": "随警记录里那扇『从里面反闩』的门，答案在复勘报告的检修口、拖痕、和那个帆布卷里。",
+      "locked_hint": "《吊顶夹层复勘报告》已入档；别忘了受理概要末页那则被雨水洇过的随警随记——门闩之谜，在头顶。",
+      "on_correct": {
+        "finding": "f_trick",
+        "script": [
+          { "op": "say", "who": "char_zhang", "text": "他从未走过那扇门——设备间、检修口、夹层，一条只属于安保主任的路。" },
+          { "op": "narrate", "text": "拖痕的尽头，帆布卷安安静静躺在展室三的正上方。门闩、密室、消失的画——三个谜共用一个谜底。" }
+        ]
+      },
+      "on_wrong": { "message": "从『由内反闩的门』出发：检修口通向哪里？管道里的拖痕停在何处？帆布卷最后是在哪里找到的？四件东西拼出一条路。" }
+    },
+    {
+      "id": "q_motive",
+      "title": "从赝品到尾款",
+      "stage": 8,
+      "prompt": "最后一块拼图：他为什么要偷一幅假画？把这条从黑市到债务的资金线走完——别忘了这一切的起点。",
+      "requires_findings": ["f_trick"],
+      "answer": ["f_fake_stolen", "c_blackmarket_offer", "c_phone_call", "c_saginuma_debt"],
+      "hint": "画商听过雪景的报价，策展人听过交货的电话，同事记得那笔突然还清的债——再加上你早已证实的『被偷的是赝品』。",
+      "locked_hint": "画商的证词、策展人的证词都已入档；证词正文里还藏着一段没被登记的闲话。把两个月前的黑市和十一月的新公寓连起来。",
+      "on_correct": {
+        "finding": "f_motive",
+        "script": [
+          { "op": "narrate", "text": "十月初的黑市报价，两个月的调包与等待，『尾款到账就交货』的电话，与十一月里还清的两千八百万。" },
+          { "op": "say", "who": "char_zhang", "text": "12月20日的检测灯一旦亮起，谎就塌了。他偷走假画，是给一座将倾的谎，抽掉最后一块砖。" }
+        ]
+      },
+      "on_wrong": { "message": "动机是一条钱线：黑市放话、交货电话、突然还清的债——再想想他偷的根本不是真迹，这桩『窃案』对谁最有利？" }
+    }
+  ],
+
+  "accusation": {
+    "prompt": "谁杀了柏木鉴康？请提交同时支撑『窃案真相』『栽赃洗冤』与『动机』的完整证据链。",
+    "suspects": ["char_sasame", "char_saginuma", "char_rin", "char_mamiya"],
+    "culprit": "char_saginuma",
+    "required_findings": ["f_fake_stolen", "f_framed", "f_motive"],
+    "on_correct": {
+      "script": [
+        { "op": "fx", "type": "flash_text", "text": "异议！" },
+        { "op": "say", "who": "char_zhang", "text": "检察官阁下，请看这位『第一时间发现案情』的先生——监控在他的专属授权卡下停了十七分钟，21点47分的警报，是他亲手发送的门磁测试。" },
+        { "op": "say", "who": "char_proc", "text": "……你想说警报是他自己拉的？那门闩呢！门是从里面插上的！" },
+        { "op": "say", "who": "char_zhang", "text": "门闩确实从里面插着——因为杀死馆长的人，从头到尾，就没有走过那扇门。" },
+        { "op": "narrate", "text": "法庭哗然。" },
+        { "op": "say", "who": "char_zhang", "text": "设备间的检修口通往展室三的夹层。管道间的拖痕停在展室正上方——各位，『失窃』的名画从未离开这栋楼，它就躺在他头顶的帆布里。" },
+        { "op": "say", "who": "char_proc", "text": "荒谬！他偷一幅假画做什么？！" },
+        { "op": "say", "who": "char_zhang", "text": "问到点子上了。那幅假画挂上墙的那天起，他就是卖掉真迹的人。12月20日的红外检测，是压死他的最后期限。" },
+        { "op": "say", "who": "char_zhang", "text": "偷走赝品，不是掠夺——是销毁证据。" },
+        { "op": "say", "who": "char_proc", "text": "动、动机呢！空口无凭！" },
+        { "op": "say", "who": "char_zhang", "text": "十月初黑市放话出售翠川雪景；十月中，有人听见他说『尾款到账，就交货』；十一月，两千八百万的旧债一夜还清，河边多了套全款的公寓。" },
+        { "op": "say", "who": "char_zhang", "text": "至于栽赃——那只手套想指认笹目。可手套的旧痕属于惯用左手的人，笹目持镊全程右手，而鹭沼先生的佩枪手栏里，写着一个『左』字。" },
+        { "op": "narrate", "text": "全场寂静。安保主任缓缓放下了按在栏杆上的手。" },
+        { "op": "say", "who": "char_saginuma", "text": "……不愧是搜查一课出来的人。同事，你比我那些老前辈下手还准。" },
+        { "op": "say", "who": "char_saginuma", "text": "三十年前，证物室丢的那幅小画，也是我。从没人查出来。那之后我就明白了——这世上最安全的位置，就是看守赃物的人。" },
+        { "op": "say", "who": "char_saginuma", "text": "去年钱烧穿了底，我给自己找了个买主。可馆长那双眼睛……他在笔记里写『雪舟在说谎』的那天，我就该收手了。" },
+        { "op": "say", "who": "char_saginuma", "text": "那晚我只想取画。是他先认出我手套上的旧茧——三十八年警龄的人，最后死在一句『原来是你』上。" },
+        { "op": "say", "who": "char_judge", "text": "……本庭宣判：被告笹目周吾，无罪。鹭沼恭平，当场逮捕。" },
+        { "op": "fx", "type": "shake" }
+      ]
+    },
+    "on_wrong": {
+      "message": "证据链还不完整——『被偷走的雪』『手套的真话』『从赝品到尾款』，三条结论都齐了吗？",
+      "script": [
+        { "op": "say", "who": "char_proc", "text": "辩方律师，直觉不能代替证据——法庭只认完整的链条。" }
+      ]
+    }
+  }
+}
